@@ -1,0 +1,65 @@
+device_tracker.davesiphone:
+  friendly_name: 'Dave'
+  icon: mdi:face
+
+device_tracker.catsiphone:
+  friendly_name: 'Cat'
+  icon: mdi:github-face
+
+sensor.cats_ipad:
+  friendly_name: 'Cat''s iPad'
+  icon: mdi:tablet-ipad
+
+sensor.daves_sp4:
+  friendly_name: 'Dave''s Surface Pro 4'
+  icon: mdi:laptop-windows
+
+sensor.gaming_pc:
+  friendly_name: 'Gaming-PC'
+  icon: mdi:microsoft
+
+sensor.harmony_hub:
+  friendly_name: 'Harmony Hub'
+  icon: mdi:drawing-box
+
+sensor.kindle_tablet:
+  friendly_name: 'Kindle Fire Tablet'
+  icon: mdi:tablet-android
+
+sensor.zyxel_nsa310:
+  friendly_name: 'Zyxel NSA310'
+  icon: mdi:server
+
+sensor.lounge_kodi:
+  friendly_name: 'Lounge Kodi'
+  icon: mdi:kodi
+  
+sensor.steam_link:
+  friendly_name: 'Steam Link'
+  icon: mdi:steam
+
+sensor.hue_hub:
+  friendly_name: 'Hue Hub'
+  icon: mdi:instagram
+
+sensor.daves_iphone_battery_level:
+  hidden: true
+  
+sensor.daves_iphone_battery_state:
+  hidden: true
+
+sensor.amazon_echo_dot:
+  friendly_name: 'Amazon Echo Dot'
+  icon: mdi:checkbox-blank-circle-outline
+
+sensor.netgear_r7000_router:
+  friendly_name: 'Netgear R7000'
+  icon: mdi:router-wireless
+
+sensor.pihole:
+  friendly_name: 'PiHole'
+  icon: mdi:dns
+
+sensor.tado_bridge:
+  friendly_name: 'Tado Bridge'
+  icon: mdi:ethernet-cable

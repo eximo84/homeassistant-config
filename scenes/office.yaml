@@ -1,0 +1,20 @@
+- name: Office Relax
+  entities:
+    light.desk_lightstrip:
+      state: on
+      brightness: 144
+      color_temp: 443
+
+- name: Office Aurora
+  entities:
+    light.desk_lightstrip:
+      state: on
+      brightness: 137
+      xy_color: [0.2056, 0.3771]
+
+- name: Office Bright
+  entities:
+    light.desk_lightstrip:
+      state: on
+      brightness: 254
+      color_temp: 233

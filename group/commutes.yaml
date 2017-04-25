@@ -1,0 +1,10 @@
+Commutes:
+  entities:
+    - sensor.home_to_daves_work
+    - sensor.daves_work_to_home
+    - sensor.home_to_cats_work
+
+Traffic Cam:
+  entities:
+    - input_select.traffic_cam
+    - camera.traffic_cam

@@ -1,0 +1,9 @@
+- name: Not Home
+  entities:
+    light.front_door_light:
+      state: on
+      brightness: 254
+    light.landing_light:
+      state: on
+      brightness: 126
+      color_temp: 447

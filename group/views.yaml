@@ -1,0 +1,54 @@
+default_view:
+  view: yes
+  icon: mdi:home
+  entities:
+    - persistent_notification.update_available
+    - group.family
+    - group.home_modes
+    - group.weather
+    - group.lounge
+    - group.dining_room
+    - group.office
+    - group.master_bedroom
+    - group.olivias_room
+    - group.front_door
+    - group.landing
+    - group.portable_devices
+    - group.tide_times
+    - group.media_players
+
+lights:
+  view: yes
+  icon: mdi:lightbulb
+  entities:
+    - group.lounge_lights
+    - group.dining_room_lights
+    - group.master_bedroom_lights
+    - group.office_lights
+    - group.front_door_lights
+    - group.landing_lights
+
+heating:
+  view: yes
+  icon: mdi:radiator
+  entities:
+    - group.tado_heating
+
+travel:
+  view: yes
+  icon: mdi:car
+  entities:
+    - group.commutes
+    - group.traffic_cam
+
+info:
+  view: yes
+  icon: mdi:settings
+  entities:
+    - group.system
+    - group.ssl_cert_info
+    - group.transmission
+    - group.device_links
+    - group.all_automations
+    - group.all_switches
+    - group.testing

@@ -1,0 +1,39 @@
+#####################################################
+#
+#  Set input boolean state to true when PC
+#  switched on - this is used for device tracking
+#  of this device
+#
+#####################################################
+- alias: Gaming-PC state change on
+  initial_state: true
+  hide_entity: false
+  trigger:
+    - platform: state
+      entity_id: switch.gaming_pc
+      from: 'off'
+      to: 'on'
+  action:
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.gamingpc_online
+
+#####################################################
+#
+#  Set input boolean state to false when PC
+#  switched off - this is used for device tracking
+#  of this device
+#
+#####################################################
+- alias: Gaming-PC state change off
+  initial_state: true
+  hide_entity: false
+  trigger:
+    - platform: state
+      entity_id: switch.gaming_pc
+      from: 'on'
+      to: 'off'
+      for:
+        minutes: '1'
+  action:
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.gamingpc_online

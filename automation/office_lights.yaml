@@ -1,0 +1,89 @@
+#####################################################
+#
+#  Switch on Lights in the Office when PC boots up
+#
+#####################################################
+- alias: Office lights on when PC started
+  initial_state: true
+  hide_entity: false
+  trigger:
+    - platform: state
+      entity_id: input_boolean.gamingpc_online
+      state: 'on'
+  condition:
+    - condition: time
+      after: '17:30:00'
+  action:
+    - service: scene.turn_on
+      entity_id: scene.office_relax
+#    - service: notify.ios_daves_iphone
+#      data:
+#        message: 'Office lights switched on'
+
+######################################################
+#
+#  Switch off Lights in the Office when PC shuts down
+#
+######################################################
+- alias: Office Lights off when PC shutdown
+  initial_state: true
+  hide_entity: false
+  trigger:
+    - platform: state
+      entity_id: input_boolean.gamingpc_online
+      state: 'off'
+  action:
+    - service: light.turn_off
+      entity_id: light.desk_lightstrip
+#    - service: notify.ios_daves_iphone
+#      data:
+#        message: 'Office lights switched off'
+
+#####################################################
+#
+#  Switch on Lights in the Office when working from home
+#
+#####################################################
+- alias: Office lights on when Working from Home
+  initial_state: true
+  hide_entity: false
+  trigger:
+    - platform: state
+      entity_id: input_boolean.work_from_home_mode
+      state: 'on'
+  condition:
+    - condition: time
+      after: '07:00:00'
+      before: '17:30:00'
+  action:
+    - service: scene.turn_on
+      entity_id: scene.office_bright
+    - service: switch.turn_on
+      entity_id: switch.gaming_pc
+    - service: switch.turn_on
+      entity_id: switch.office_light_flux
+    - service: notify.ios_daves_iphone
+      data:
+        message: 'Working from home, PC and office lights switched on'
+
+#####################################################
+#
+#  Switch off Lights in the Office when finished working from home
+#
+#####################################################
+- alias: Office lights off when finished Working from Home
+  initial_state: true
+  hide_entity: false
+  trigger:
+    - platform: state
+      entity_id: input_boolean.work_from_home_mode
+      from: 'on'
+      to: 'off'
+  action:
+    - service: light.turn_off
+      entity_id: light.desk_lightstrip
+    - service: switch.turn_off
+      entity_id: switch.office_light_flux
+    - service: notify.ios_daves_iphone
+      data:
+        message: 'Working from home finised, office lights switched off'

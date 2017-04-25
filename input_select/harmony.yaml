@@ -1,0 +1,10 @@
+harmony:
+  name: Harmony Remote
+  options:
+    - Select Activity
+    - Watch TV
+    - Watch Kodi
+    - Watch a Bluray
+    - Start Steam Link
+    - Power Off
+  icon: mdi:remote

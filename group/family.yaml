@@ -1,0 +1,5 @@
+family:
+  name: Family
+  entities:
+    - device_tracker.davesiphone
+    - device_tracker.catsiphone

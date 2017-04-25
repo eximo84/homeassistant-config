@@ -1,0 +1,49 @@
+#####################################################
+#                                                   #
+#  Root device disk usage greater than 90% #
+#                                                   #
+#####################################################
+- alias: System Disk Space gt 90% Notification
+  trigger:
+    platform: numeric_state
+    entity_id: sensor.disk_use_
+    above: 89
+  action:
+    service: notify.ios_daves_iphone
+    data:
+      message: 'Raspberry Pi Server disk usage is at {{ states.sensor.disk_use_.state }}%'
+
+#####################################################
+#
+#  SSL Cert Expiry Notification
+#
+#####################################################
+- alias: SSL Expiry Notification
+  trigger:
+    platform: time
+    after: '09:00:00'
+  condition:
+    condition: numeric_state
+    entity_id: sensor.ssl_cert_expiry
+    below: 7
+   # condition: template
+   # value_template: '{{ as_timestamp(states.sensor.ssl_cert_expiry.state) < as_timestamp(now())-604800 }}'
+  action:
+    service: notify.ios_daves_iphone
+    data_template:
+      message: 'SSL cert due to expire in {{ states.sensor.ssl_cert_expiry.state }} days'
+        #{% if states.sensor.ssl_cert_expiry.state) < as_timestamp(now()) %}
+        #SSL certificate expired on {{ states.sensor.ssl_cert_expiry.state }}
+        #{% else %}
+        #SSL certificate is due to expire on {{ states.sensor.ssl_cert_expiry.state }}
+        #{% endif %}
+#        {% if states.sensor.ssl_cert_expiry.state <= '7' %}
+#        SSL cert due to expire in {{states.sensor.ssl_cert_expiry.state}} days
+#        {% elif states.sensor.ssl_cert_expiry.state == '1' %}
+#        SSL cert due to expire in tomorrow
+#        {% else %}
+#        SSL cert expired {{states.sensor.ssl_cert_expiry.state}} days ago
+#        {% endif %}
+
+
+

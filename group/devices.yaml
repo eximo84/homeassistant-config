@@ -1,0 +1,32 @@
+devices:
+  name: Devices
+  entities:
+    - sensor.netgear_r7000_router
+    - sensor.zyxel_nsa310
+    - sensor.pihole
+    - sensor.harmony_hub
+    - sensor.hue_hub
+    - sensor.lounge_kodi
+    - sensor.gaming_pc
+    - sensor.steam_link
+    - sensor.amazon_echo_dot
+    - sensor.home_tado_bridge_status
+
+portable devices:
+  name: Portable Devices
+  entities:
+    - sensor.daves_sp4
+    - sensor.cats_ipad
+    - sensor.kindle_tablet
+
+device links:
+  name: Device Links
+  entities:
+    - weblink.router
+    - weblink.nsa310
+    - weblink.pihole
+
+media players:
+  name: Media Players
+  entities:
+    - media_player.kodi

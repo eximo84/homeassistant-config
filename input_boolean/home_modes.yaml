@@ -1,0 +1,14 @@
+guest_mode:
+  name: Guest Mode
+  icon: mdi:account-multiple-plus
+  initial: off
+    
+work_from_home_mode:
+  name: Work from Home
+  icon: mdi:security-home
+  initial: off
+
+away_mode:
+  name: Away Mode
+  icon: mdi:airplane-takeoff
+  initial: off

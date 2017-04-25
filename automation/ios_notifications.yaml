@@ -1,0 +1,35 @@
+#####################################################
+#
+#  Rich iOS notification to enable Work From Home Mode
+#  if Dave at home after 8am Mon-Fri
+#
+#####################################################
+- alias: Ask if to Enable Work from home
+  initial_state: true
+  hide_entity: false
+  trigger:
+    - platform: time
+      after: '08:00:00'
+    - platform: time
+      after: '17:30:00'
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: device_tracker.davesiphone
+        state: 'home'
+      - condition: time
+        weekday:
+          - mon
+          - tue
+          - wed
+          - thu
+          - fri
+  action:
+    - service: notify.ios_daves_iphone
+      data:
+        message: "Should i enable Working From Home mode?"
+        data:
+          push:
+            badge: 0
+            category: "WFH"

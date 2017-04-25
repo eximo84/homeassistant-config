@@ -1,0 +1,21 @@
+Lounge Lights:
+  entities:
+    - light.lounge_sidelight
+    - light.boat_light
+Dining Room Lights:
+  entities:
+    - light.dining_room_uplight
+    - light.fire_uplight
+Master Bedroom Lights:
+  entities:
+    - light.bedroom_side_light
+Office Lights:
+  entities:
+    - light.desk_lightstrip
+Front Door Lights:
+  entities:
+    - light.front_door_light
+Landing Lights:
+  entities:
+    - light.landing_light
+

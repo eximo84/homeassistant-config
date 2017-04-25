@@ -1,0 +1,6 @@
+- pause_transmission_downloads:
+    sequence:
+      - service: shell_command.pause_transmission_downloads
+- resume_transmission_downloads:
+    sequence:
+      - service: shell_command.resume_transmission_downloads

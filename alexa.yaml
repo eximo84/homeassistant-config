@@ -1,0 +1,12 @@
+intents:
+  CommuteToWorkIntent:
+    speech:
+      type: plaintext
+      text: >
+        {% if states.device_tracker.davesiphone.name.lower() == User.lower() %}
+          Commute time from home to Dave's work is currently {{ states.sensor.home_to_daves_work.state  }} minutes.
+        {% elif states.device_tracker.catsiphone.name.lower() == User.lower() %}
+          Commute time from home to Cats's work is currently {{ states.sensor.home_to_cats_work.state  }} minutes.
+        {% else %}
+          I am sorry, I cannot find commute times for {{ User }}.
+        {% endif %}

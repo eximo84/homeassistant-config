@@ -1,0 +1,17 @@
+#####################################################
+#
+#  Notify if PiHole device goes offline
+#
+#####################################################
+- alias: Notification PiHole Offline
+  initial_state: true
+  hide_entity: false
+  trigger:
+    - platform: state
+      entity_id: device_tracker.pihole
+      from: 'home'
+      to: 'not_home'
+  action:
+    service: notify.ios_daves_iphone
+    data:
+      message: 'PiHole Device is Offline'

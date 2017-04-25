@@ -1,0 +1,5 @@
+- name: After Hours
+  entities:
+    light.front_door_light:
+      state: on
+      brightness: 1

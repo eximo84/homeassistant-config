@@ -1,0 +1,6 @@
+- name: Bedtime
+  entities:
+    light.landing_light:
+      state: on
+      brightness: 1
+      color_temp: 500

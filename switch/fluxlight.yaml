@@ -1,0 +1,6 @@
+- platform: flux
+  lights:
+    - light.desk_lightstrip
+  name: Office Light Flux
+  stop_colortemp: 2500
+  disable_brightness_adjust: True

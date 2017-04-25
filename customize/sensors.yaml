@@ -1,0 +1,61 @@
+sensor.home_to_daves_work:
+  friendly_name: 'Home to Dave''s Work'
+  icon: mdi:car
+
+sensor.home_to_cats_work:
+  friendly_name: 'Home to Cat''s Work'
+  icon: mdi:car
+
+sensor.daves_work_to_home:
+  friendly_name: 'Dave''s Work to Home'
+  icon: mdi:car
+
+sensor.transmission_status:
+  icon: mdi:download
+
+sensor.transmission_down_speed:
+  icon: mdi:download
+
+sensor.tide_location:
+  icon: mdi:map-marker
+
+sensor.high_tide_time:
+  icon: mdi:flag-variant
+
+sensor.high_tide_height:
+  icon: mdi:elevation-rise
+
+sensor.low_tide_time:
+  icon: mdi:flag-outline-variant
+
+sensor.low_tide_height:
+  icon: mdi:elevation-decline
+
+sensor.heating_tado_mode:
+  icon: mdi:home
+
+sensor.olivias_room_tado_mode:
+  icon: mdi:home
+
+sensor.heating_heating:
+  friendly_name: 'Lounge Heating'
+  icon: mdi:radiator
+
+sensor.olivias_room_heating:
+  icon: mdi:radiator
+
+sensor.heating_humidity:
+  friendly_name: 'Lounge Humidity'
+
+sensor.mqtt_nodemcu_tempsensor_01:
+  friendly_name: 'Temperature'
+
+sensor.ssl_cert_expiry:
+  icon: mdi:certificate
+
+switch.office_light_flux:
+  icon: mdi:lightbulb-on
+
+sensor.remote_lounge:
+  icon: mdi:television
+  friendly_name: 'Current Harmony Activity'

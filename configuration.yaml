@@ -1,0 +1,191 @@
+homeassistant:
+  # Name of the location where Home Assistant is running
+  name: Home
+  # Location required to calculate the time the sun rises and sets
+  latitude: !secret latitude_home
+  longitude: !secret longitude_home
+  # Impacts weather/sunrise data (altitude above sea level in meters)
+  elevation: !secret elevation_home
+  # metric for Metric, imperial for Imperial
+  unit_system: metric
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: Europe/London
+  customize: !include_dir_merge_named customize  
+
+# Enables the frontend
+frontend:
+group: !include_dir_merge_named group
+
+# Enables the iOS component
+ios:
+  push:
+    categories:
+      - name: wfh
+        identifier: 'WFH'
+        actions:
+          - identifier: 'WFH_MODE_ENABLED'
+            title: 'Yes'
+            activationMode: 'background'
+            authenticationRequired: yes
+            destructive: no
+            behavior: 'default'
+          - identifier: 'WFH_MODE_DISABLED'
+            title: 'No'
+            activationMode: 'background'
+            authenticationRequired: yes
+            destructive: no
+            behavior: 'default'
+
+# Frontend configuration
+http:
+  api_password: !secret http_password
+  ssl_certificate: !secret http_ssl_cert
+  ssl_key: !secret http_ssl_key
+  trusted_networks:
+    - 192.168.1.0/24
+    - 10.8.0.0/24
+  ip_ban_enabled: True
+  login_attempts_threshold: 5
+
+#Enabls the Configuration Panel
+config:
+
+# Checks for available updates
+updater:
+  reporting: no
+
+# Database Purge
+recorder:
+  purge_days: 7
+
+# Discover some devices automatically
+discovery:
+
+# Allows you to issue voice commands from the frontend in enabled browsers
+conversation:
+
+# Enables support for tracking state changes over time.
+history:
+  include:
+    domains:
+      - switch
+      - light
+
+# Events in the logbook
+logbook:
+  exclude:
+    entities:
+      - sensor.cpu_use
+      - sensor.date
+      - sensor.disk_use_
+      - sensor.last_boot
+      - sensor.ram_use
+      - sensor.since_last_boot
+      - sensor.time
+    domains:
+      - sun
+
+# Default logging information
+logger:
+  default: warn
+
+# Track the sun
+sun:
+
+# Zone Assignments
+zone:
+  name: Dave's Work
+  latitude: !secret latitude_zone
+  longitude: !secret longitude_zone
+  radius: 150 
+  icon: mdi:domain
+
+zone 2:
+  name: Cat's Work
+  latitude: !secret latitude_zone2
+  longitude: !secret longitude_zone2
+  radius: 150
+  icon: mdi:domain
+
+# Device Tracking
+device_tracker:
+  - platform: asuswrt
+    host: 192.168.1.1
+    username: admin
+    password: !secret asuswrt_password
+    track_new_devices: false
+    interval_seconds: 10
+
+# Enables the Light Component
+light:
+  platform: hue
+  host: 192.168.1.8
+
+# Presents switches, sensors to Alexa via Hue Skill
+#emulated_hue:
+#  host_ip: 192.168.1.3 
+#  exposed_domains:
+#    - switch
+#    - input_boolean
+
+# Enables Tado Heating Components
+tado:
+  username: !secret tado_username
+  password: !secret tado_password
+
+# Enables the MQTT Component
+mqtt:
+  broker: 192.168.1.3
+  port: 1883
+  client_id: home-assistant
+  keepalive: 60
+  username: !secret mqtt_username
+  password: !secret mqtt_password
+
+# Enables the Harmony Remote Component  
+remote:
+  - platform: harmony
+    name: lounge
+    host: 192.168.1.7
+
+# Enables the Media Player Components
+media_player lounge:
+  - platform: kodi
+    host: 192.168.1.4
+
+# Enables the Weblink Components
+weblink:
+  entities: 
+    - name: Router
+      url: http://192.168.1.1
+    - name: NSA310
+      url: http://192.168.1.2
+    - name: Transmission
+      url: http://192.168.1.3:9091
+    - name: PiHole
+      url: http://192.168.1.254/admin
+
+# Enables the Shell Commands Components
+shell_command:
+  pause_transmission_downloads: transmission-remote -tall -S
+  resume_transmission_downloads: transmission-remote -tall -s
+
+# Enables the Script Components
+script:
+  pause_transmission_downloads:
+    sequence:
+      - service: shell_command.pause_transmission_downloads
+  resume_transmission_downloads:
+    sequence:
+      - service: shell_command.resume_transmission_downloads
+
+# Additional Components broken into Seperate yaml files
+alexa: !include alexa.yaml
+binary_sensor: !include_dir_merge_list binary_sensor
+camera: !include_dir_merge_list camera
+sensor: !include_dir_merge_list sensor
+switch: !include_dir_merge_list switch
+scene: !include_dir_merge_list scenes
+automation: !include_dir_merge_list automation
+input_boolean: !include_dir_merge_named input_boolean
+input_select: !include_dir_merge_named input_select 

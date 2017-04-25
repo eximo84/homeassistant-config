@@ -1,0 +1,40 @@
+- platform: template
+  sensors:
+    cats_ipad:
+      value_template: "{{ 'Online' if is_state('device_tracker.catherinesipad', 'home') else 'Offline' }}"
+      
+    gaming_pc:
+      value_template: "{{ 'Online' if is_state('device_tracker.gamingpc', 'home') else 'Offline' }}"
+
+    harmony_hub:
+      value_template: "{{ 'Online' if is_state('device_tracker.harmonyhub', 'home') else 'Offline' }}"
+
+    kindle_tablet:
+      value_template: "{{ 'Online' if is_state('device_tracker.kindle98daf0f3c', 'home') else 'Offline' }}"
+
+    zyxel_nsa310:
+      value_template: "{{ 'Online' if is_state('device_tracker.nsa310', 'home') else 'Offline' }}"
+
+    lounge_kodi:
+      value_template: "{{ 'Online' if is_state('device_tracker.osmc', 'home') else 'Offline' }}"
+
+    steam_link:
+      value_template: "{{ 'Online' if is_state('device_tracker.steamlink21ee', 'home') else 'Offline' }}"
+
+    hue_hub:
+      value_template: "{{ 'Online' if is_state('device_tracker.huehub', 'home') else 'Offline' }}"
+
+    amazon_echo_dot:
+      value_template: "{{ 'Online' if is_state('device_tracker.kindle603ce2c5e', 'home') else 'Offline' }}"
+
+    pihole:
+      value_template: "{{ 'Online' if is_state('device_tracker.pihole', 'home') else 'Offline' }}"
+
+    netgear_r7000_router:
+      value_template: "{{ 'Online' if is_state('device_tracker.netgear201d', 'home') else 'Offline' }}"
+
+    tado_bridge:
+      value_template: "{{ 'Online' if is_state('sensor.home_tado_bridge_status', 'True') else 'Offline' }}"
+
+    daves_sp4:
+      value_template: "{{ 'Online' if is_state('device_tracker.davessp4', 'True') else 'Offline' }}"

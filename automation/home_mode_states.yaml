@@ -1,0 +1,54 @@
+#####################################################
+#
+#  Enable Work From Home Mode via iOS Notification response
+#
+#####################################################
+- alias: Enable WFH mode from iOS Notification Response
+  initial_state: True
+  hide_entity: false
+  trigger:
+    platform: event
+    event_type: ios.notification_action_fired
+    event_data:
+      actionName: WFH_MODE_ENABLED
+  action:
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.work_from_home_mode
+
+#####################################################
+#
+#  Disable Work From Home Mode via iOS Notification response
+#
+#####################################################
+- alias: Disable WFH mode from iOS Notification Response
+  initial_state: True
+  hide_entity: false
+  trigger:
+    platform: event
+    event_type: ios.notification_action_fired
+    event_data:
+      actionName: WFH_MODE_DISABLED
+  action:
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.work_from_home_mode
+
+#####################################################
+#
+#  Disable Work From Home Mode if Dave Leaves House
+#
+#####################################################
+- alias: Disable WFH mode if Dave Leaves Home
+  initial_state: false
+  hide_entity: false
+  trigger:
+    - platform: state
+      entity_id: device_tracker.davesiphone
+      from: 'home'      
+      to: 'not_home'
+  condition:
+    - condition: state
+      entity_id: input_boolean.work_from_home_mode
+      state: 'on'
+  action:
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.work_from_home_mode 

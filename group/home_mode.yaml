@@ -1,0 +1,6 @@
+Home Modes:
+  control: hidden
+  entities:
+    - input_boolean.guest_mode
+    - input_boolean.work_from_home_mode
+    - input_boolean.away_mode

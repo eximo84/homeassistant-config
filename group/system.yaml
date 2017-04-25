@@ -1,0 +1,13 @@
+system:
+  name: System Information
+  entities:
+    - sensor.cpu_use
+    - sensor.ram_use
+    - sensor.last_boot
+    - sensor.since_last_boot
+    - sensor.disk_use_
+
+ssl_cert_info:
+  name: SSL Cert Information
+  entities:
+    - sensor.ssl_cert_expiry

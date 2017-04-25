@@ -1,0 +1,23 @@
+weblink.router:
+  friendly_name: 'Router Web Interface'
+  icon: mdi:router-wireless
+weblink.nsa310:
+  friendly_name: 'Zyxel NSA310 Web Interface'
+  icon: mdi:server
+weblink.transmission:
+  friendly_name: 'Transmission Web Interface'
+  icon: mdi:download
+weblink.pihole:
+  friendly_name: 'PiHole Web Interface'
+  icon: mdi:dns
+script.pause_transmission_downloads:
+  friendly_name: 'Pause Downloads'
+  icon: mdi:pause
+script.resume_transmission_downloads:
+  friendly_name: 'Resume Downloads'
+  icon: mdi:play
+script.restart_transmission_service:
+  friendly_name: 'Restart Transmission Service'
+  icon: mdi:replay
+switch.gaming_pc:
+  icon: mdi:microsoft

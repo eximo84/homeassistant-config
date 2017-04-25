@@ -1,0 +1,4 @@
+- platform: mqtt
+  state_topic: 'nodemcu/tempsensor'
+  name: 'mqtt_nodemcu_tempsensor_01'
+  unit_of_measurement: '°C'

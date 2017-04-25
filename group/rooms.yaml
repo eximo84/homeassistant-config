@@ -1,0 +1,57 @@
+lounge:
+  name: Lounge
+  control: hidden
+  entities:
+    - climate.heating
+    - sensor.heating_humidity
+    - sensor.heating_heating
+    - group.lounge_lights
+    - sensor.remote_lounge
+    - input_select.harmony
+    - sensor.lounge_kodi
+    - sensor.harmony_hub
+    - sensor.steam_link
+
+dining room:
+  name: Dining Room
+  entities:
+    - group.dining_room_lights
+    - sensor.mqtt_nodemcu_tempsensor_01
+    - sensor.netgear_r7000_router
+    - sensor.pihole
+    - sensor.amazon_echo_dot
+    - sensor.hue_hub
+    - sensor.tado_bridge
+    - weblink.router
+    - weblink.pihole
+
+front door:
+  name: Front Door
+  entities:
+    - group.front_door_lights
+
+landing:
+  name: Landing
+  entities:
+    - group.landing_lights
+
+master bedroom:
+  name: Master Bedroom
+  entities:
+    - group.master_bedroom_lights
+
+office:
+  name: Office
+  entities:
+    - group.office_lights
+#    - sensor.gaming_pc
+    - switch.gaming_pc
+    - sensor.zyxel_nsa310
+    - weblink.nsa310
+
+olivias room:
+  name: Olivia's Room
+  entities:
+    - climate.olivias_room
+    - sensor.olivias_room_humidity
+    - sensor.olivias_room_heating

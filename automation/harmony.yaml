@@ -1,0 +1,39 @@
+- alias: Harmony Activity Start
+  hide_entity: false
+  trigger:
+    platform: state
+    entity_id: input_select.harmony
+    from: 'Select Activity'
+  action:
+    - service: remote.turn_on
+      entity_id: remote.lounge
+      data_template:
+        activity: >
+          {% if is_state("input_select.harmony", "Watch TV") %}
+            20700748
+          {% elif is_state("input_select.harmony", "Watch Kodi") %}
+            20685286
+          {% elif is_state("input_select.harmony", "Watch a Bluray") %}
+            20669445
+          {% elif is_state("input_select.harmony", "Start Steam Link") %}
+            20669446
+          {% else %}
+          {% endif %}
+    - service: input_select.select_option
+      entity_id: input_select.harmony
+      data_template:
+        option: "Select Activity"
+
+- alias: Harmony Activity End
+  hide_entity: false
+  trigger:
+    platform: state
+    entity_id: input_select.harmony
+    to: 'Power Off'
+  action:
+    - service: remote.turn_off
+      entity_id: remote.living_room
+    - service: input_select.select_option
+      entity_id: input_select.harmony
+      data_template:
+        option: "Select Activity"

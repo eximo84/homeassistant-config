@@ -1,0 +1,25 @@
+
+#####################################################
+#
+#  Below Freezing Notification
+#
+#####################################################
+- alias: Below Freezing Notification
+  initial_state: True
+  hide_entity: false
+  trigger:
+    - platform: sun
+      event: sunset
+      offset: '-00:15:00'
+    - platform: state
+      entity_id: device_tracker.davesiphone
+      from: 'not_home'
+      to: 'home'
+  condition:
+    - condition: numeric_state
+      entity_id: sensor.dark_sky_temperature 
+      below: '3'
+  action:
+    - service: notify.ios_daves_iphone
+      data:
+        message: 'The outside temperature is currently {{ states.sensor.dark_sky_temperature.state }} degrees, you might want to put on the windscreen cover.'

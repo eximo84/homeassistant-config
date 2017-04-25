@@ -1,0 +1,17 @@
+- platform: google_travel_time
+  name: home_to_daves_work
+  api_key: !secret gmaps_api_key
+  origin: zone.home
+  destination: zone.daves_work
+
+- platform: google_travel_time
+  name: home_to_cats_work
+  api_key: !secret gmaps_api_key
+  origin: zone.home
+  destination: zone.cats_work
+
+- platform: google_travel_time
+  name: daves_work_to_home
+  api_key: !secret gmaps_api_key
+  origin: zone.daves_work
+  destination: zone.home

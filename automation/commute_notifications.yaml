@@ -1,0 +1,76 @@
+#####################################################
+#
+#  Dave Commute to Home Notification
+#
+#####################################################
+- alias: Dave Commute to Home Notification
+  initial_state: True
+  hide_entity: false
+  trigger:
+    platform: time
+    after: '16:30:00'
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: device_tracker.davesiphone
+        state: 'not_home'
+      - condition: time
+        weekday:
+          - mon
+          - tue
+          - wed
+          - thu
+          - fri
+  action:
+    - service: notify.ios_daves_iphone
+      data:
+        message: 'Commute time to home is currently {{ states.sensor.daves_work_to_home.state }} minutes.'
+    - delay: 00:30:00
+    - service: notify.ios_daves_iphone
+      data:
+        message: 'Commute time to home is currently {{ states.sensor.daves_work_to_home.state }} minutes.'
+    - delay: 00:30:00
+    - service: notify.ios_daves_iphone
+      data:
+        message: 'Commute time to home is currently {{ states.sensor.daves_work_to_home.state }} minutes.'
+
+#####################################################
+#
+#  Dave Commute to Work Notification
+#
+#####################################################
+- alias: Dave Commute To Work Notification
+  initial_state: True
+  hide_entity: false
+  trigger:
+    platform: time
+    after: '07:00:00'
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: device_tracker.davesiphone
+        state: 'home'
+      - condition: time
+        weekday:
+          - mon
+          - tue
+          - wed
+          - thu
+          - fri
+#      - condition: numeric_state
+#        entity_id: sensor.home_to_daves_work
+#        above: 30
+  action:
+    - service: notify.ios_daves_iphone
+      data:
+        message: 'Commute time to work is currently {{ states.sensor.home_to_daves_work.state }} minutes.'
+    - delay: 00:30:00
+    - service: notify.ios_daves_iphone
+      data:
+        message: 'Commute time to work is currently {{ states.sensor.home_to_daves_work.state }} minutes.'
+    - delay: 00:30:00
+    - service: notify.ios_daves_iphone
+      data:
+        message: 'Commute time to work is currently {{ states.sensor.home_to_daves_work.state }} minutes.'

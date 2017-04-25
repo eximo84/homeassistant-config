@@ -1,0 +1,15 @@
+sensor.dark_sky_minutely_summary:
+  friendly_name: 'Forecast'
+  icon: mdi:weather-sunny
+sensor.dark_sky_daily_high_temperature:
+  friendly_name: 'Today''s High Temp'
+  homebridge_hidden: true
+sensor.dark_sky_daily_low_temperature:
+  friendly_name: 'Today''s Low Temp'
+  homebridge_hidden: true
+sensor.dark_sky_temperature:
+  friendly_name: 'Temperature'
+sensor.dark_sky_apparent_temperature:
+  friendly_name: 'Feels Like'
+sensor.dark_sky_humidity:
+  friendly_name: 'Humidity'

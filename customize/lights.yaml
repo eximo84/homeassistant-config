@@ -1,0 +1,14 @@
+light.lounge_sidelight:
+  icon: mdi:lamp
+
+light.boat_light:
+  icon: mdi:lamp
+
+light.front_door_light:
+  icon: mdi:ceiling-light
+
+light.landing_light:
+  icon: mdi:ceiling-light
+
+light.bedroom_side_light:
+  icon: mdi:lamp

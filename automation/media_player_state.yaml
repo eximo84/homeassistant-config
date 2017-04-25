@@ -1,0 +1,37 @@
+#####################################################
+#
+#  Hide Kodi Media Player if idle
+#
+#####################################################
+- alias: Hide Kodi if Idle
+  initial_state: true
+  hide_entity: false
+  trigger:
+    - platform: state
+      entity_id: media_player.kodi
+      from: 'Playing'
+      to: 'Idle'
+  action:
+    - service: group.set_visibility
+      entity_id: group.media_players
+      data:
+        visible: false
+
+#####################################################
+#
+#  Show Kodi Media Player if not idle
+#
+#####################################################
+- alias: Show Kodi if not Idle
+  initial_state: true
+  hide_entity: false
+  trigger:
+    - platform: state
+      entity_id: media_player.kodi
+      from: 'Idle'
+      to: 'Playing'
+  action:
+    - service: group.set_visibility
+      entity_id: group.media_players
+      data:
+        visible: true
