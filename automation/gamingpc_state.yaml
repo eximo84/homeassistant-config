@@ -1,8 +1,6 @@
 #####################################################
 #
-#  Set input boolean state to true when PC
-#  switched on - this is used for device tracking
-#  of this device
+#  Set input boolean state to true when PC switched on - this is used for device tracking of this device
 #
 #####################################################
 - alias: Gaming-PC state change on
@@ -19,9 +17,7 @@
 
 #####################################################
 #
-#  Set input boolean state to false when PC
-#  switched off - this is used for device tracking
-#  of this device
+#  Set input boolean state to false when PC switched off - this is used for device tracking of this device
 #
 #####################################################
 - alias: Gaming-PC state change off

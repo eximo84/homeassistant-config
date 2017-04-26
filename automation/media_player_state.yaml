@@ -9,8 +9,7 @@
   trigger:
     - platform: state
       entity_id: media_player.kodi
-      from: 'Playing'
-      to: 'Idle'
+      state: 'Idle'
   action:
     - service: group.set_visibility
       entity_id: group.media_players
@@ -28,8 +27,7 @@
   trigger:
     - platform: state
       entity_id: media_player.kodi
-      from: 'Idle'
-      to: 'Playing'
+      state: 'Playing'
   action:
     - service: group.set_visibility
       entity_id: group.media_players

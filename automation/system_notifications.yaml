@@ -1,7 +1,7 @@
 #####################################################
-#                                                   #
-#  Root device disk usage greater than 90% #
-#                                                   #
+#
+#  Root device disk usage greater than 90%
+#
 #####################################################
 - alias: System Disk Space gt 90% Notification
   trigger:

@@ -1,7 +1,7 @@
 #####################################################
-#                                                   #
-#  Home Assistant Startup Notification              #
-#                                                   #
+#
+#  Home Assistant Startup Notification
+#
 #####################################################
 - alias: HASS Startup Notification
   trigger:
@@ -13,9 +13,9 @@
       message: 'Home assistant started'
 
 #####################################################
-#                                                   #
-#  Home Assistant Update Notification               #
-#                                                   #
+#
+#  Home Assistant Update Notification
+#
 #####################################################
 - alias: HASS Update Notification
   trigger:

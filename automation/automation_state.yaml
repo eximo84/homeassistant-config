@@ -23,8 +23,7 @@
 
 #####################################################
 #
-#  Enable lights_on_after_hours automation at
-#  9pm if Cat is not home
+#  Enable lights_on_after_hours automation at 9pm if Cat is not home
 #
 #####################################################
 - alias: Enable lights_on_after_hours automation

@@ -1,7 +1,6 @@
 #####################################################
 #
-#  Rich iOS notification to enable Work From Home Mode
-#  if Dave at home after 8am Mon-Fri
+#  Rich iOS notification to enable Work From Home Mode if Dave at home after 8am Mon-Fri
 #
 #####################################################
 - alias: Ask if to Enable Work from home
