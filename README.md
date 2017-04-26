@@ -64,10 +64,16 @@ These packages are installed on the Raspberry Pi hosting Home Assistant
 Still WIP and always changing, my web front end is all custom views, i try to group as many things as possible and then put the group into individual rooms groups to allow a quick overview of the home.
 
 *Home Page*
-![Home Page](http://i.imgur.com/WYNE52X.png)
+![Home Page](https://i.imgur.com/qSwapnR.png)
 
 *Lights Page*
-![Lights Page](http://imgur.com/tLrW1qn.png)
+![Lights Page](https://i.imgur.com/1hpsXNV.png)
 
-*Settings Page*
-![Settings Page](http://imgur.com/ynUQK7F.png)
+*Heating Page*
+![Heating Page](https://i.imgur.com/KLKepVT.png)
+
+*Commutes Page*
+![Commutes Page](https://i.imgur.com/vpQmmVp.png)
+
+*Info Page*
+![Info Page](https://i.imgur.com/4uCVgwB.png)
