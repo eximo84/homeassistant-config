@@ -32,7 +32,8 @@ heating:
   view: yes
   icon: mdi:radiator
   entities:
-    - group.tado_heating
+    - group.lounge_heating
+    - group.olivias_room_heating
 
 travel:
   view: yes

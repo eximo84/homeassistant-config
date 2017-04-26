@@ -7,8 +7,8 @@ tide times:
     - sensor.low_tide_time
     - sensor.low_tide_height
 
-tado heating:
-  name: Tado Heating
+lounge heating:
+  name: Lounge Heating
   entities:
     - sensor.heating_temperature
     - sensor.heating_humidity
@@ -17,6 +17,10 @@ tado heating:
     - sensor.heating_link
     - sensor.heating_overlay
     - sensor.heating_power
+
+olivias room heating:
+  name: Olivia's Room Heating
+  entities:
     - sensor.olivias_room_temperature
     - sensor.olivias_room_humidity
     - sensor.olivias_room_tado_mode
