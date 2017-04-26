@@ -1,0 +1,15 @@
+#################################################
+#
+# Redacted version of Traffic Camera Input Select
+#
+#################################################
+#traffic_cam:
+#  name: Traffic Camera
+#  options:
+#    - #####
+#    - #####
+#    - #####
+#    - #####
+#    - #####
+#    - #####
+#  icon: mdi:webcam

@@ -1,0 +1,21 @@
+#################################################
+#
+# Redacted version of Traffic Camera Generic Camera Component
+#
+#################################################
+#- platform: generic
+#  name: traffic_cam
+#  still_image_url: >
+#    {% if is_state('input_select.traffic_cam', '#####') %}
+#      URL TO CCTV WEBSITE
+#    {% elif is_state('input_select.traffic_cam', '#####') %}
+#      URL TO CCTV WEBSITE
+#    {% elif is_state('input_select.traffic_cam', '#####') %}
+#      URL TO CCTV WEBSITE
+#    {% elif is_state('input_select.traffic_cam', '#####') %}
+#      URL TO CCTV WEBSITE
+#    {% elif is_state('input_select.traffic_cam', '#####') %}
+#      URL TO CCTV WEBSITE
+#    {% elif is_state('input_select.traffic_cam', '#####') %}
+#      URL TO CCTV WEBSITE
+#    {%- endif %}
