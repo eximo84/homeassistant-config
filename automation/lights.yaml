@@ -50,16 +50,16 @@
 
 #####################################################
 #
-#  Switch on lights 15 minutes before sunset if at home and BST
+#  Switch on lights 30 minutes before sunset if at home and BST
 #
 #####################################################
-- alias: Lights on 1hr before sunset if home BST
+- alias: Lights on 30 mins before sunset if home BST
   initial_state: true
   hide_entity: false
   trigger:
     platform: sun
     event: sunset
-    offset: '-00:15:00'
+    offset: '-00:30:00'
   condition:
     condition: and
     conditions:
@@ -74,12 +74,11 @@
       entity_id: scene.daytime
     - service: notify.ios_daves_iphone
       data:
-        message: 'It is 15 minutes until sunset so I have switched on the lights for you.'
+        message: 'It is 30 minutes until sunset so I have switched on the lights for you.'
 
 #####################################################
 #
-#  Switch on lights when someone arrives home and 
-#  nobody is already home or lights are off
+#  Switch on lights when someone arrives home and nobody is already home or lights are off
 #
 #####################################################
 - alias: Lights on arrive home
@@ -114,8 +113,7 @@
 
 #####################################################
 #
-#  Switch on front door light when Cat arrives
-#  home after 10pm
+#  Switch on front door light when Cat arrives home after 10pm
 #
 #####################################################
 - alias: Lights on after hours
@@ -190,3 +188,19 @@
   action:
     - service: scene.turn_on
       entity_id: scene.bedtime
+
+#####################################################
+#
+#  Switch on lights 30 minutes before sunset if Guest Mode Enabled
+#
+#####################################################
+- alias: Guest Mode Lights on 30 mins before sunset
+  initial_state: false
+  hide_entity: false
+  trigger:
+    platform: sun
+    event: sunset
+    offset: '-00:30:00'
+  action:
+    - service: scene.turn_on
+      entity_id: scene.daytime
