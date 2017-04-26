@@ -1,0 +1,35 @@
+#####################################################
+#
+#  Disable automations when Guest Mode enabled
+#
+#####################################################
+- alias: Guest Mode Enabled
+  initial_state: True
+  hide_entity: false
+  trigger:
+    - platform: state
+      entity_id: input_boolean.guest_mode
+      state: 'on'
+  action:
+    - service: automation.turn_off
+      entity_id: automation.lights_off_all_leave_home
+    - service: automation.turn_on
+      entity_id: automation.guest_mode_lights_on_30_mins_before_sunset
+
+#####################################################
+#
+#  Enable automations when Guest Mode disabled
+#
+#####################################################
+- alias: Guest Mode Disabled
+  initial_state: True
+  hide_entity: false
+  trigger:
+    - platform: state
+      entity_id: input_boolean.guest_mode
+      state: 'off'
+  action:
+    - service: automation.turn_on
+      entity_id: automation.lights_off_all_leave_home
+    - service: automation.turn_off
+      entity_id: automation.guest_mode_lights_on_30_mins_before_sunset
