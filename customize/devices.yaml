@@ -52,14 +52,6 @@ sensor.amazon_echo_dot:
   friendly_name: 'Amazon Echo Dot'
   icon: mdi:checkbox-blank-circle-outline
 
-sensor.netgear_r7000_router:
-  friendly_name: 'Netgear R7000'
-  icon: mdi:router-wireless
-
-sensor.pihole:
-  friendly_name: 'PiHole'
-  icon: mdi:dns
-
 sensor.tado_bridge:
   friendly_name: 'Tado Bridge'
   icon: mdi:ethernet-cable

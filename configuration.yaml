@@ -111,10 +111,18 @@ zone 2:
 device_tracker:
   - platform: asuswrt
     host: 192.168.1.1
+    protocol: telnet
     username: admin
     password: !secret asuswrt_password
     track_new_devices: false
-    interval_seconds: 10
+    interval_seconds: 30
+  - platform: ping
+    hosts:
+      nsa310_ping: 192.168.1.2
+      count: 4
+#  - platform: nmap_tracker
+#    hosts: 192.168.1.1/24
+#    home_interval: 10
 
 # Enables the Light Component
 light:

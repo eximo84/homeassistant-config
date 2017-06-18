@@ -1,0 +1,9 @@
+- name: evening_diningroom
+  entities:
+    light.dining_room_uplight:
+      state: on
+      brightness: 254
+    light.fire_uplight:
+      state: on
+      brightness: 254
+      color_temp: 447

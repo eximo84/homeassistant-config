@@ -1,9 +1,7 @@
 devices:
   name: Devices
   entities:
-    - sensor.netgear_r7000_router
     - sensor.zyxel_nsa310
-    - sensor.pihole
     - sensor.harmony_hub
     - sensor.hue_hub
     - sensor.lounge_kodi

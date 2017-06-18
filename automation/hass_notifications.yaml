@@ -5,8 +5,8 @@
 #####################################################
 - alias: HASS Startup Notification
   trigger:
-    platform: event
-    event_type: homeassistant_start
+    platform: homeassistant
+    event: start
   action:
     service: notify.ios_daves_iphone
     data:

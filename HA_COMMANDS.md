@@ -11,7 +11,7 @@
 **Update HomeAssistant:**
 
  1. Change to homeassistant user: `sudo su -s /bin/bash homeassistant`
- 2. Change to virtual enviroment: `source /srv/homeassistant/homeassistant_venv/bin/activate`
+ 2. Change to virtual enviroment: `source /srv/homeassistant/bin/activate`
  3. Update HomeAssistant `pip3 install --upgrade homeassistant`
  4. Type `exit` to logout the homeassistant user and return to the pi user.
  5. Restart the HomeAssistant Service

@@ -17,8 +17,6 @@ dining room:
   entities:
     - group.dining_room_lights
     - sensor.mqtt_nodemcu_tempsensor_01
-    - sensor.netgear_r7000_router
-    - sensor.pihole
     - sensor.amazon_echo_dot
     - sensor.hue_hub
     - sensor.tado_bridge

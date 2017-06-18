@@ -1,0 +1,12 @@
+- name: evening_lounge
+  entities:
+    light.lounge_sidelight:
+      state: on
+      brightness: 235
+      transition: 900
+      color_temp: 447
+    light.boat_light:
+      state: on
+      brightness: 200
+      transition: 900
+      color_temp: 447

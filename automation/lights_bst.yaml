@@ -1,0 +1,53 @@
+#####################################################
+#
+#  Switch on Dining Room lights at 5:30pm if at home and BST
+#
+#####################################################
+- alias: Dining Room Lights on at 5:30 if home BST
+  initial_state: true
+  hide_entity: false
+  trigger:
+    platform: time
+    at: '17:30:00'
+  condition:
+    condition: and
+    conditions:
+     - condition: state
+       entity_id: group.family
+       state: 'home'
+     - condition: state
+       entity_id: binary_sensor.bst
+       state: 'on'
+  action:
+    - service: scene.turn_on
+      entity_id: scene.evening_diningroom
+    - service: notify.ios_daves_iphone
+      data:
+        message: 'It is 5:30pm so I have switched on the dining room lights for you.'
+
+#####################################################
+#
+#  Switch on Lounge lights at 7:00pm if at home and BST
+#
+#####################################################
+- alias: Lounge Lights on at 7:00 if home BST
+  initial_state: true
+  hide_entity: false
+  trigger:
+    platform: time
+    at: '19:00:00'
+  condition:
+    condition: and
+    conditions:
+     - condition: state
+       entity_id: group.family
+       state: 'home'
+     - condition: state
+       entity_id: binary_sensor.bst
+       state: 'on'
+  action:
+    - service: scene.turn_on
+      entity_id: scene.evening_lounge
+    - service: notify.ios_daves_iphone
+      data:
+        message: 'It is 7pm so I have switched on the lounge lights for you.'

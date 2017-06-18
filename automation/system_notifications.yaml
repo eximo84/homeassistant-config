@@ -21,7 +21,7 @@
 - alias: SSL Expiry Notification
   trigger:
     platform: time
-    after: '09:00:00'
+    at: '09:00:00'
   condition:
     condition: numeric_state
     entity_id: sensor.ssl_cert_expiry

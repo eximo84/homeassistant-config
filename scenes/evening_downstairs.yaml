@@ -1,4 +1,4 @@
-- name: Daytime
+- name: evneing_downstairs
   entities:
     light.dining_room_uplight:
       state: on
@@ -9,9 +9,11 @@
       color_temp: 447
     light.lounge_sidelight:
       state: on
-      brightness: 254
+      brightness: 200
+      transition: 1200
       color_temp: 447
     light.boat_light:
       state: on
-      brightness: 254
+      brightness: 200
+      transition: 1200
       color_temp: 447

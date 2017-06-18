@@ -8,7 +8,7 @@
 #   hide_entity: false
 #   trigger:
 #     platform: time
-#     after: '16:30:00'
+#     at: '16:30:00'
 #   condition:
 #     condition: and
 #     conditions:
@@ -57,7 +57,7 @@
 #   hide_entity: false
 #   trigger:
 #     platform: time
-#     after: '07:00:00'
+#     at: '07:00:00'
 #   condition:
 #     condition: and
 #     conditions:

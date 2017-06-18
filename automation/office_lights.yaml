@@ -9,7 +9,8 @@
   trigger:
     - platform: state
       entity_id: input_boolean.gamingpc_online
-      state: 'on'
+      from: 'off'
+      to: 'on'
   condition:
     - condition: time
       after: '17:30:00'
@@ -28,7 +29,8 @@
   trigger:
     - platform: state
       entity_id: input_boolean.gamingpc_online
-      state: 'off'
+      from: 'on'
+      to: 'off'
   action:
     - service: light.turn_off
       entity_id: light.desk_lightstrip
@@ -47,7 +49,8 @@
   trigger:
     - platform: state
       entity_id: input_boolean.work_from_home_mode
-      state: 'on'
+      from: 'off'
+      to: 'on'
   condition:
     - condition: time
       after: '07:00:00'

@@ -22,19 +22,13 @@
       value_template: "{{ 'Online' if is_state('device_tracker.steamlink21ee', 'home') else 'Offline' }}"
 
     hue_hub:
-      value_template: "{{ 'Online' if is_state('device_tracker.huehub', 'home') else 'Offline' }}"
+      value_template: "{{ 'Online' if is_state('device_tracker.hugo', 'home') else 'Offline' }}"
 
     amazon_echo_dot:
-      value_template: "{{ 'Online' if is_state('device_tracker.kindle603ce2c5e', 'home') else 'Offline' }}"
-
-    pihole:
-      value_template: "{{ 'Online' if is_state('device_tracker.pihole', 'home') else 'Offline' }}"
-
-    netgear_r7000_router:
-      value_template: "{{ 'Online' if is_state('device_tracker.netgear201d', 'home') else 'Offline' }}"
+      value_template: "{{ 'Online' if is_state('device_tracker.amazon603ce2c5e', 'home') else 'Offline' }}"
 
     tado_bridge:
-      value_template: "{{ 'Online' if is_state('sensor.home_tado_bridge_status', 'True') else 'Offline' }}"
+      value_template: "{{ 'Online' if is_state('device_tracker.tado', 'home') else 'Offline' }}"
 
     daves_sp4:
-      value_template: "{{ 'Online' if is_state('device_tracker.davessp4', 'True') else 'Offline' }}"
+      value_template: "{{ 'Online' if is_state('device_tracker.davessp4', 'home') else 'Offline' }}"
