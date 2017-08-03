@@ -14,6 +14,25 @@ homeassistant:
 
 # Enables the frontend
 frontend:
+  themes:
+    test:
+      #primary-color = main header
+      primary-color: "#263238"
+      #
+      text-primary-color: "red"
+      #paper-grey-50 = Off Toggle Buttons
+      #paper-grey-50: red
+      dark-primary-color: "blue"
+      #primary-text-color = card title and sensor text color
+      #primary-text-color: "yellow"
+      #secondary-text-color = card sub text color
+      #secondary-text-color: "yellow"
+      paper-toggle-button-checked-ink-color: "#607D8B"
+      paper-toggle-button-checked-button-color: "#607D8B"
+      paper-toggle-button-checked-bar-color: "#607D8B"
+      paper-slider-knob-color: "green"
+
+      
 group: !include_dir_merge_named group
 
 # Enables the iOS component
@@ -111,18 +130,15 @@ zone 2:
 device_tracker:
   - platform: asuswrt
     host: 192.168.1.1
-    protocol: telnet
+    protocol: ssh
     username: admin
     password: !secret asuswrt_password
     track_new_devices: false
     interval_seconds: 30
-  - platform: ping
-    hosts:
-      nsa310_ping: 192.168.1.2
-      count: 4
-#  - platform: nmap_tracker
-#    hosts: 192.168.1.1/24
-#    home_interval: 10
+  - platform: nmap_tracker
+    hosts: 192.168.1.1/24
+    home_interval: 10
+    track_new_devices: false
 
 # Enables the Light Component
 light:

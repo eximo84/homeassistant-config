@@ -4,7 +4,7 @@
 #
 #####################################################
 - alias: Ask if to Enable Work from home
-  initial_state: true
+  initial_state: false
   hide_entity: false
   trigger:
     - platform: time
