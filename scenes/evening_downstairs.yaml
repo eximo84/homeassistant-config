@@ -9,11 +9,11 @@
       color_temp: 447
     light.lounge_sidelight:
       state: on
-      brightness: 200
+      brightness: 254
       transition: 1200
       color_temp: 447
     light.boat_light:
       state: on
-      brightness: 200
+      brightness: 254
       transition: 1200
       color_temp: 447

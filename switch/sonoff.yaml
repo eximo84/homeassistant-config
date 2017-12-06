@@ -1,0 +1,16 @@
+- platform: mqtt
+  name: "Sonoff Power 1"
+  state_topic: "stat/sonoff1/POWER"
+  command_topic: "cmnd/sonoff1/POWER"
+  qos: 1
+  payload_on: "ON"
+  payload_off: "OFF"
+  retain: true
+- platform: mqtt
+  name: "Sonoff Power 2"
+  state_topic: "stat/sonoff2/POWER"
+  command_topic: "cmnd/sonoff2/POWER"
+  qos: 1
+  payload_on: "ON"
+  payload_off: "OFF"
+  retain: true

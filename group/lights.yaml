@@ -18,4 +18,7 @@ Front Door Lights:
 Landing Lights:
   entities:
     - light.landing_light
+Bathroom Lights:
+  entities:
+    - light.bathroom_light
 

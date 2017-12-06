@@ -4,7 +4,7 @@
 #
 #####################################################
 - alias: Dining Room Lights on at 5:30 if home BST
-  initial_state: true
+  initial_state: false
   hide_entity: false
   trigger:
     platform: time
@@ -31,11 +31,11 @@
 #
 #####################################################
 - alias: Lounge Lights on at 7:00 if home BST
-  initial_state: true
+  initial_state: false
   hide_entity: false
   trigger:
     platform: time
-    at: '19:00:00'
+    at: '17:30:00'
   condition:
     condition: and
     conditions:
@@ -50,4 +50,4 @@
       entity_id: scene.evening_lounge
     - service: notify.ios_daves_iphone
       data:
-        message: 'It is 7pm so I have switched on the lounge lights for you.'
+        message: 'It is 5:30pm so I have switched on the lounge lights for you.'

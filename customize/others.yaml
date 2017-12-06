@@ -19,5 +19,3 @@ script.resume_transmission_downloads:
 script.restart_transmission_service:
   friendly_name: 'Restart Transmission Service'
   icon: mdi:replay
-switch.gaming_pc:
-  icon: mdi:microsoft

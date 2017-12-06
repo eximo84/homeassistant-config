@@ -17,6 +17,7 @@ Regular Blog posts about my Home Automation setup here: http://www.handmadepixel
  - Samsung Smart TV
  - Logitech Harmony Elite Remote and Hub
  - Raspberry Pi 2B Running Kodi (OSMC)
+ - Sonoff Basic: iTead WiFi Wireless Smart Switch
 
 **Additional Software Packages:**
 These packages are installed on the Raspberry Pi hosting Home Assistant 

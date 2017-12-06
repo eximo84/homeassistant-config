@@ -19,6 +19,7 @@
 #
 #####################################################
 - alias: SSL Expiry Notification
+  initial_state: True
   trigger:
     platform: time
     at: '09:00:00'

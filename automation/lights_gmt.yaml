@@ -38,12 +38,20 @@
      - condition: state
        entity_id: group.family
        state: 'home'
-     - condition: state
-       entity_id: binary_sensor.bst
-       state: 'off'
+#     - condition: state
+#       entity_id: binary_sensor.bst
+#       state: 'off'
   action:
-    - service: scene.turn_on
-      entity_id: scene.evening_downstairs
+#    - service: scene.turn_on
+#      entity_id: scene.evening_downstairs
+    - service: light.turn_on
+      data:
+        entity_id: group.lounge_lights
+        brightness: 255
+    - service: light.turn_on
+      data:
+        entity_id: group.dining_room_lights
+        brightness: 255
     - service: notify.ios_daves_iphone
       data:
         message: 'It is 1 hour until sunset so I have switched on the lights for you.'
@@ -74,8 +82,22 @@
         entity_id: group.dining_room_lights
         state: 'off'
   action:
-    - service: scene.turn_on
-      entity_id: scene.evening_downstairs
+    - service: light.turn_on
+      data:
+        entity_id: group.lounge_lights
+        brightness: 255
+    - service: light.turn_on
+      data:
+        entity_id: group.dining_room_lights
+        brightness: 255
+    - service: light.turn_on
+      data:
+        entity_id: light.landing_light
+        brightness: 200
+#   - service: scene.turn_on
+#     entity_id: scene.evening_downstairs
+    - service: switch.turn_on
+      entity_id: switch.sonoff_power_1
     - service: notify.ios_daves_iphone
       data:
         message: 'Welcome home, I have switched on the lights for you.'
@@ -101,8 +123,10 @@
       after: '22:00:00'
       before: '06:00:00'
   action:
-    - service: scene.turn_on
-      entity_id: scene.after_hours
+    - service: light.turn_on
+      data:
+        entity_id: light.front_door_light
+        brightness: 1
     - delay: 00:10:00
     - service: light.turn_off
       entity_id: light.front_door_light    
@@ -141,6 +165,8 @@
   action:
     - service: light.turn_off
       entity_id: group.all_lights
+    - service: switch.turn_off
+      entity_id: switch.sonoff_power_1
     - service: notify.ios_daves_iphone
       data:
         message: 'There is no one at home and some lights where left on, so I have switched off the lights for you.'
@@ -196,3 +222,45 @@
       entity_id: group.lounge_lights
     - service: light.turn_off
       entity_id: group.dining_room_lights
+
+#####################################################
+#
+#  Set Bathroom light red if on after 10pm
+#
+#####################################################
+- alias: Bathroom Lights at Night
+  initial_state: true
+  hide_entity: false
+  trigger:
+    - platform: state
+      entity_id: light.bathroom_light
+      from: 'off'
+      to: 'on'
+  condition:
+    - condition: time
+      after: '22:00:00'
+      before: '06:00:00'
+  action:
+    - service: light.turn_on
+      data:
+        entity_id: light.bathroom_light
+        brightness: 200
+        rgb_color: [255, 0, 0]
+
+#####################################################
+#
+#  Bathroom light off after 30 mins
+#
+#####################################################
+- alias: Bathroom Light off after 30 mins
+  initial_state: true
+  hide_entity: false
+  trigger:
+    - platform: state
+      entity_id: light.bathroom_light 
+      from: 'off'
+      to: 'on'
+  action:
+    - delay: 00:30:00
+    - service: light.turn_off
+      entity_id: light.bathroom_light

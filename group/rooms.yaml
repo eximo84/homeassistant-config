@@ -14,8 +14,10 @@ lounge:
 
 dining room:
   name: Dining Room
+  control: hidden
   entities:
     - group.dining_room_lights
+    - switch.sonoff_power_1
     - sensor.mqtt_nodemcu_tempsensor_01
     - sensor.amazon_echo_dot
     - sensor.hue_hub
@@ -40,6 +42,7 @@ master bedroom:
 
 office:
   name: Office
+  control: hidden
   entities:
     - group.office_lights
 #    - sensor.gaming_pc
@@ -53,3 +56,8 @@ olivias room:
     - climate.olivias_room
     - sensor.olivias_room_humidity
     - sensor.olivias_room_heating
+
+bathroom:
+  name: Bathroom
+  entities:
+    - group.bathroom_lights

@@ -6,3 +6,6 @@
     - type: memory_use_percent
     - type: disk_use_percent
       arg: /
+
+- platform: cert_expiry
+  host: chapelhass.duckdns.org

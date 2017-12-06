@@ -28,7 +28,7 @@
       value_template: "{{ 'Online' if is_state('device_tracker.amazon603ce2c5e', 'home') else 'Offline' }}"
 
     tado_bridge:
-      value_template: "{{ 'Online' if is_state('device_tracker.tado', 'home') else 'Offline' }}"
+      value_template: "{{ 'Online' if is_state('device_tracker.tado_2', 'home') else 'Offline' }}"
 
     daves_sp4:
       value_template: "{{ 'Online' if is_state('device_tracker.davessp4', 'home') else 'Offline' }}"

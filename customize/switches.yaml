@@ -1,0 +1,9 @@
+switch.gaming_pc:
+  icon: mdi:microsoft
+
+switch.sonoff_power_1:
+  friendly_name: 'Christmas Tree'
+  icon: mdi:power-plug
+
+switch.sonoff_power_2:
+  icon: mdi:power-plug

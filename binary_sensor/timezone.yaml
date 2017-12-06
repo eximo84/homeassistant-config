@@ -1,4 +1,4 @@
-- platform: template
-  sensors:
-    bst:
-      value_template: '{{ now() < utcnow() }}'
+#- platform: template
+#  sensors:
+#    bst:
+#      value_template: '{{ now() < utcnow() }}'

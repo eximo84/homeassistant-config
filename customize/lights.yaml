@@ -12,3 +12,9 @@ light.landing_light:
 
 light.bedroom_side_light:
   icon: mdi:lamp
+
+light.bathroom_light:
+  icon: mdi:ceiling-light
+
+light.desk_lightstrip:
+  icon: mdi:led-strip
