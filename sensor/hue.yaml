@@ -1,0 +1,26 @@
+- platform: rest
+  resource: !secret hue_motion_sensor_api_url
+  value_template: '{{ value_json.state.presence }}'
+  scan_interval: 2
+  name: 'Bathroom Motion Binary'
+
+- platform: rest
+  resource: !secret hue_motion_sensor_lux_api_url
+  value_template: '{{ value_json.state.lightlevel }}'
+  unit_of_measurement: 'Lux'
+  scan_interval: 60
+  name: 'Bathroom Lux'
+
+- platform: rest
+  resource: !secret hue_motion_sensor_temp_api_url
+  value_template: '{{ value_json.state.temperature | float / 100 }}'
+  unit_of_measurement: '°C'
+  scan_interval: 120
+  name: 'Bathroom Temperature'
+
+- platform: rest
+  resource: !secret hue_motion_sensor_temp_api_url
+  value_template: '{{ value_json.config.battery }}'
+  unit_of_measurement: '%'
+  scan_interval: 1800
+  name: 'Bathroom Motion Sensor Battery'

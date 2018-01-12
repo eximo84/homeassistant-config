@@ -11,6 +11,7 @@ Regular Blog posts about my Home Automation setup here: http://www.handmadepixel
  - Tado Smart Radiator Thermostat
  - Philips Hue Hub v2
  - Philips Hue Bulbs
+ - Philips Hue Motion Sensor
  - NodeMCU (ESP8266) with DS18B20 Temp Sensor
  - Netgear R7000 Nighthack with ASUS-WRT Vortex Firmware
  - Raspberry Pi 1B Running PiHole
@@ -26,6 +27,7 @@ These packages are installed on the Raspberry Pi hosting Home Assistant
  - Mosquitto - MQTT broker connected into Home Assistant
  - Transmission
  - OpenVPN
+ - SickRage
 
 **Automations:**
 

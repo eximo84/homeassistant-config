@@ -1,0 +1,21 @@
+#####################################################
+#
+#  Notify if motion detected but no body home
+#
+#####################################################
+- alias: Motion Detected but no one home notification
+  initial_state: true
+  hide_entity: false
+  trigger:
+    - platform: state
+      entity_id: sensor.bathroom_motion_binary
+      from: 'False'
+      to: 'True'
+  condition:
+    - condition: state
+      entity_id: group.family
+      state: 'not_home'
+  action:
+    - service: notify.ios_daves_iphone
+      data:
+        message: 'Motion has been Detected but no body is at Home.'

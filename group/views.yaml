@@ -5,18 +5,16 @@ default_view:
     - persistent_notification.update_available
     - group.family
     - group.home_modes
-    - group.weather
     - group.lounge
     - group.dining_room
-    - group.office
-    - group.master_bedroom
-    - group.olivias_room
-    - group.bathroom
     - group.front_door
     - group.landing
+    - group.master_bedroom
+    - group.olivias_room
+    - group.office
+    - group.bathroom
     - group.portable_devices
-    - group.tide_times
-    - group.media_players
+    - group.weather
 
 lights:
   view: yes
@@ -24,10 +22,10 @@ lights:
   entities:
     - group.lounge_lights
     - group.dining_room_lights
-    - group.master_bedroom_lights
-    - group.office_lights
     - group.front_door_lights
     - group.landing_lights
+    - group.master_bedroom_lights
+    - group.office_lights
     - group.bathroom_lights
 
 heating:
@@ -37,12 +35,27 @@ heating:
     - group.lounge_heating
     - group.olivias_room_heating
 
+switches:
+  view: yes
+  icon: mdi:power-socket-uk
+  entities:
+    - group.Sonoff_Switch_1
+    - group.Sonoff_Switch_2
+    - group.all_switches
+
+media players:
+  view: yes
+  icon: mdi:youtube-play
+  entities:
+    - media_player.kodi
+
 travel:
   view: yes
   icon: mdi:car
   entities:
     - group.commutes
     - group.traffic_cam
+    - group.tide_times
 
 info:
   view: yes
@@ -53,5 +66,5 @@ info:
     - group.transmission
     - group.device_links
     - group.all_automations
-    - group.all_switches
     - group.testing
+    

@@ -14,6 +14,25 @@ group.all_remotes:
 
 ################################
 #
+#  Tab View Ordering
+#
+################################
+
+group.lights:
+  order: 2
+group.heating:
+  order: 3
+group.switches:
+  order: 4 
+group.media_players:
+  order: 5
+group.travel:
+  order: 6
+group.info:
+  order: 7
+
+################################
+#
 #  Home View Card Ordering
 #
 ################################
@@ -25,23 +44,21 @@ group.home_modes:
   order: 3
 group.lounge:
   order: 4
-group.media_players:
-  order: 5
 group.dining_room:
-  order: 6
+  order: 5
 group.front_door:
-  order: 7
+  order: 6
 group.landing:
-  order: 8
+  order: 7
 group.master_bedroom:
-  order: 9
+  order: 8
 group.olivias_room:
-   order: 10
+   order: 9
+group.bathroom:
+  order: 10
 group.office:
   order: 11
 group.portable_devices:
   order: 12
 group.weather:
   order: 13
-group.tide_times:
-  order: 14

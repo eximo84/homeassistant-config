@@ -23,10 +23,9 @@
   unit_of_measurement: "m"
   icon: mdi:elevation-decline
 
-- platform: command_line
-  name: SSL Cert Expiry
-  command: "ssl-cert-check -c /etc/letsencrypt/live/chapelhass.duckdns.org/cert.pem | tail -c 36"
-#  #command: TZ=GMT date --date="$(openssl x509 -in "/etc/letsencrypt/live/chapelhass.duckdns.org/cert.pem" -noout -enddate | cut -d= -f 2)"  +"%F %T"
-  scan_interval: 86400
-  icon: mdi:certificate
-  unit_of_measurement: days
+#- platform: command_line
+#  name: SSL Cert Expiry
+#  command: "ssl-cert-check -c /etc/letsencrypt/live/REDACTED_URL/cert.pem | tail -c 36"
+#  scan_interval: 86400
+#  icon: mdi:certificate
+#  unit_of_measurement: days

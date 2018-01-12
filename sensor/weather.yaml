@@ -1,5 +1,5 @@
 - platform: darksky
-  api_key: a14616e7ba752c5341aaa90ecffc975d
+  api_key: !secret darksky_api_key
   monitored_conditions:
     #- summary
     #- icon

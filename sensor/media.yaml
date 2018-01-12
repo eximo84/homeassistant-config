@@ -1,0 +1,19 @@
+- platform: template
+  sensors:
+    remote_lounge:
+      value_template: '{{ states.remote.lounge.attributes.current_activity }}'
+      friendly_name: 'Lounge'
+    kodi_media_type:
+      value_template: >
+        {% if states.media_player.kodi.attributes %}
+          {{ states.media_player.kodi.attributes.media_content_type }}
+        {% else %}
+          None
+        {% endif %}
+    kodi_media_title:
+      value_template: >
+        {% if states.media_player.kodi.attributes %}
+          {{ states.media_player.kodi.attributes.media_title }}
+        {% else %}
+          None
+        {% endif %}

@@ -59,3 +59,14 @@ switch.office_light_flux:
 sensor.remote_lounge:
   icon: mdi:television
   friendly_name: 'Current Harmony Activity'
+
+sensor.bathroom_motion_sensor_battery:
+  icon: mdi:battery
+
+sensor.bathroom_lux:
+  icon: mdi:brightness-7
+  friendly_name: "Bathroom Lux"
+
+sensor.bathroom_motion_binary:
+  icon: mdi:walk
+  friendly_name: "Hue Motion Sensor"

@@ -212,7 +212,7 @@
 #
 #####################################################
 - alias: Downstairs lights off at 9am
-  initial_state: true
+  initial_state: false
   hide_entity: false
   trigger:
     platform: time
@@ -223,44 +223,194 @@
     - service: light.turn_off
       entity_id: group.dining_room_lights
 
+
 #####################################################
 #
-#  Set Bathroom light red if on after 10pm
+#  Set Bathroom on after motion detected early morning
 #
 #####################################################
-- alias: Bathroom Lights at Night
+- alias: Bathroom Lights on after motion detected early morning
   initial_state: true
   hide_entity: false
   trigger:
     - platform: state
-      entity_id: light.bathroom_light
-      from: 'off'
-      to: 'on'
+      entity_id: sensor.bathroom_motion_binary
+      from: 'False'
+      to: 'True'
+  condition:
+    - condition: time
+      after: '05:30:00'
+      before: '06:45:00'
+  action:
+    - service: light.turn_on
+      data:
+        entity_id: light.bathroom_light
+        brightness: 200
+        transition: 180
+        rgb_color: [255, 189, 86]
+
+#####################################################
+#
+#  Set Bathroom on after motion detected during daytime
+#
+#####################################################
+- alias: Bathroom Lights on after motion detected daytime
+  initial_state: true
+  hide_entity: false
+  trigger:
+    platform: state
+    entity_id: sensor.bathroom_motion_binary
+    from: 'False'
+    to: 'True'
+  condition:
+    - condition: time
+      after: '06:45:00'
+      before: '22:00:00'
+  action:
+    - service: light.turn_on
+      data:
+        entity_id: light.bathroom_light
+        brightness: 254
+        rgb_color: [255, 211, 135]
+
+#####################################################
+#
+#  Set Bathroom and landing lights on after motion detected at night
+#
+#####################################################
+- alias: Bathroom Lights on after motion detected at night
+  initial_state: true
+  hide_entity: false
+  trigger:
+    - platform: state
+      entity_id: sensor.bathroom_motion_binary
+      from: 'False'
+      to: 'True'
   condition:
     - condition: time
       after: '22:00:00'
-      before: '06:00:00'
+      before: '05:30:00'
   action:
     - service: light.turn_on
       data:
         entity_id: light.bathroom_light
         brightness: 200
         rgb_color: [255, 0, 0]
+    - service: light.turn_on
+      data:
+        entity_id: light.landing_light
+        brightness: 1
+        rgb_color: [255, 0, 0]
 
 #####################################################
 #
-#  Bathroom light off after 30 mins
+#  Turn off Bathroom light 5 minutes after last motion detected
 #
 #####################################################
-- alias: Bathroom Light off after 30 mins
+- alias: Bathroom Lights off 5 mins after motion detected
   initial_state: true
   hide_entity: false
   trigger:
     - platform: state
-      entity_id: light.bathroom_light 
-      from: 'off'
-      to: 'on'
+      entity_id: sensor.bathroom_motion_binary
+      from: 'True'
+      to: 'False'
+      for:
+        minutes: 4
+  condition:
+    condition: or
+    conditions:
+      - condition: time
+        after: '09:00:00'
+        before: '18:00:00'
+      - condition: time
+        after: '19:00:00'
+        before: '05:30:00'
   action:
-    - delay: 00:30:00
+    - service: light.turn_on
+      data:
+        entity_id: light.bathroom
+        brightness: 150
+    - delay: 00:01:00
     - service: light.turn_off
       entity_id: light.bathroom_light
+
+
+#####################################################
+#
+#  Turn off Bathroom light 15 minutes after last motion detected
+#
+#####################################################
+- alias: Bathroom Lights off 15 mins after motion detected
+  initial_state: true
+  hide_entity: false
+  trigger:
+    - platform: state
+      entity_id: sensor.bathroom_motion_binary
+      from: 'True'
+      to: 'False'
+      for:
+        minutes: 14
+  condition:
+    - condition: time
+      after: '18:00:00'
+      before: '19:00:00'
+  action:
+    - service: light.turn_on
+      data:
+        entity_id: light.bathroom
+        brightness: 150
+    - delay: 00:01:00
+    - service: light.turn_off
+      entity_id: light.bathroom_light
+
+#####################################################
+#
+#  Turn off Bathroom light 15 minutes after last motion detected
+#
+#####################################################
+- alias: Bathroom Lights off 19 mins after motion detected
+  initial_state: true
+  hide_entity: false
+  trigger:
+    - platform: state
+      entity_id: sensor.bathroom_motion_binary
+      from: 'True'
+      to: 'False'
+      for:
+        minutes: 9
+  condition:
+    - condition: time
+      after: '05:30:00'
+      before: '09:00:00'
+  action:
+    - service: light.turn_on
+      data:
+        entity_id: light.bathroom
+        brightness: 150
+    - delay: 00:01:00 
+    - service: light.turn_off
+      entity_id: light.bathroom_light
+
+#####################################################
+#
+#  Turn off landing light 1 minute after being switched on at night
+#
+#####################################################
+- alias: Landing light off after 1 minutes at night
+  initial_state: true
+  hide_entity: false
+  trigger:
+    - platform: state
+      entity_id: light.landing_light
+      from: 'off'
+      to: 'on'
+      for:
+        minutes: 1
+  condition:
+    - condition: time
+      after: '22:00:00'
+      before: '05:30:00'
+  action:
+    - service: light.turn_off
+      entity_id: light.landing_light

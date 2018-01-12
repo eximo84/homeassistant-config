@@ -1,0 +1,19 @@
+gamingpc_online:
+  name: Gaming-PC Online
+
+test_input:
+  name: test_input
+
+dave_notification_test_input:
+  name: Dave Notification Test
+
+cat_notification_test_input:
+  name: Cat Notification Test
+
+switch_1_timer_input:
+  name: Enable Timer
+  icon: mdi:clock-start
+
+switch_2_timer_input:
+  name: Enable Timer
+  icon: mdi:clock-start

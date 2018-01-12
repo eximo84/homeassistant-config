@@ -1,0 +1,13 @@
+Sonoff Switch 1:
+  control: hidden
+  entities:
+    - input_select.switch_1_timer_select
+    - input_boolean.switch_1_timer_input
+    - switch.sonoff_power_1
+
+Sonoff Switch 2:
+  control: hidden
+  entities:
+    - input_select.switch_2_timer_select
+    - input_boolean.switch_2_timer_input
+    - switch.sonoff_power_2

@@ -8,4 +8,10 @@
       arg: /
 
 - platform: cert_expiry
-  host: chapelhass.duckdns.org
+  host: !secret HASS_URL
+
+- platform: time_date
+  display_options:
+    - 'time'
+    - 'date'
+    - 'time_utc'

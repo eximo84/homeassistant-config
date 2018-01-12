@@ -2,10 +2,10 @@ lounge:
   name: Lounge
   control: hidden
   entities:
+    - group.lounge_lights
     - climate.heating
     - sensor.heating_humidity
     - sensor.heating_heating
-    - group.lounge_lights
     - sensor.remote_lounge
     - input_select.harmony
     - sensor.lounge_kodi
@@ -17,8 +17,8 @@ dining room:
   control: hidden
   entities:
     - group.dining_room_lights
-    - switch.sonoff_power_1
     - sensor.mqtt_nodemcu_tempsensor_01
+    - switch.sonoff_power_2
     - sensor.amazon_echo_dot
     - sensor.hue_hub
     - sensor.tado_bridge
@@ -45,7 +45,6 @@ office:
   control: hidden
   entities:
     - group.office_lights
-#    - sensor.gaming_pc
     - switch.gaming_pc
     - sensor.zyxel_nsa310
     - weblink.nsa310
@@ -61,3 +60,8 @@ bathroom:
   name: Bathroom
   entities:
     - group.bathroom_lights
+    - sensor.bathroom_temperature
+    - sensor.bathroom_lux
+    - sensor.bathroom_motion_binary
+    - sensor.bathroom_motion_sensor_battery
+    

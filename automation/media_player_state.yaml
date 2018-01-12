@@ -1,37 +1,90 @@
 #####################################################
 #
-#  Hide Kodi Media Player if idle
+#  Dim lights when movie is playing after 7pm
 #
 #####################################################
-- alias: Hide Kodi if Idle
+- alias: Kodi Movie Lights Playing
   initial_state: true
   hide_entity: false
   trigger:
     - platform: state
       entity_id: media_player.kodi
-      from: 'Playing'
-      to: 'Idle'
+      to: 'playing'
+  condition:
+    condition: and
+    conditions:
+      - condition: time
+        after: '19:00:00'
+      - condition: state
+        entity_id: sensor.kodi_media_type
+        state: 'movie'
   action:
-    - service: group.set_visibility
-      entity_id: group.media_players
-      data:
-        visible: false
+    service: light.turn_on
+    entity_id: 
+      - light.boat_light
+      - light.lounge_sidelight
+    data:
+      brightness: 50
+      transition: 30
+      rgb_color: [255, 189, 86]
+        
 
 #####################################################
 #
-#  Show Kodi Media Player if not idle
+#  Brighten lights when movie is paused after 7pm
 #
 #####################################################
-- alias: Show Kodi if not Idle
+- alias: Kodi Movie Lights Paused
   initial_state: true
   hide_entity: false
   trigger:
     - platform: state
       entity_id: media_player.kodi
-      from: 'Idle'
-      to: 'Playing'
+      from: 'playing'
+      to: 'paused'
+  condition:
+    condition: and
+    conditions:
+      - condition: time
+        after: '19:00:00'
+      - condition: state
+        entity_id: sensor.kodi_media_type
+        state: 'movie'
   action:
-    - service: group.set_visibility
-      entity_id: group.media_players
-      data:
-        visible: true
+    service: light.turn_on
+    entity_id: 
+      - light.boat_light
+      - light.lounge_sidelight
+    data:
+      brightness: 175
+      rgb_color: [255, 189, 86]
+
+#####################################################
+#
+#  Brighten lights when movie is finished
+#
+#####################################################
+- alias: Kodi Movie Lights Stopped
+  initial_state: true
+  hide_entity: false
+  trigger:
+    - platform: state
+      entity_id: media_player.kodi
+      from: 'playing'
+      to: 'idle'
+    - platform: state
+      entity_id: media_player.kodi
+      from: 'paused'
+      to: 'idle'
+  condition:
+    - condition: time
+      after: '19:00:00'
+  action:
+    service: light.turn_on
+    entity_id: 
+      - light.boat_light
+      - light.lounge_sidelight
+    data:
+      brightness: 254
+      transition: 30
+      rgb_color: [255, 189, 86]

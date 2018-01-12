@@ -1,5 +1,0 @@
-- platform: template
-  sensors:
-    remote_lounge:
-      value_template: '{{ states.remote.lounge.attributes.current_activity }}'
-      friendly_name: 'Lounge'

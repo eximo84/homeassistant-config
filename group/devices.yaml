@@ -23,8 +23,3 @@ device links:
     - weblink.router
     - weblink.nsa310
     - weblink.pihole
-
-media players:
-  name: Media Players
-  entities:
-    - media_player.kodi
