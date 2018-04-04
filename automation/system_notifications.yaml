@@ -25,14 +25,14 @@
     at: '09:00:00'
   condition:
     condition: numeric_state
-    entity_id: sensor.ssl_cert_expiry
+    entity_id: sensor.ssl_certificate_expiry
     below: 7
    # condition: template
    # value_template: '{{ as_timestamp(states.sensor.ssl_cert_expiry.state) < as_timestamp(now())-604800 }}'
   action:
     service: notify.ios_daves_iphone
     data_template:
-      message: 'SSL cert due to expire in {{ states.sensor.ssl_cert_expiry.state }} days'
+      message: 'SSL cert due to expire in {{ states.sensor.ssl_certificate_expiry }} days'
         #{% if states.sensor.ssl_cert_expiry.state) < as_timestamp(now()) %}
         #SSL certificate expired on {{ states.sensor.ssl_cert_expiry.state }}
         #{% else %}

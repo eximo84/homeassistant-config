@@ -15,91 +15,7 @@ homeassistant:
 # Enables the frontend
 frontend:
   javascript_version: latest
-  themes:
-    teal:
-      # Main Stuff #
-      primary-color: "#1DE9B6" # Primary (most of the UI)
-      primary-background-color: "#303030" # Primary background colour (dialogs, e.t.c)
-      secondary-background-color: "#303030" # Secondary background colour (main UI background)
-      paper-card-background-color: "#424242" # Card background colour
-      paper-item-icon-color: "#1DE9B6" # Icon colour
-      primary-text-color: "#FFFFFF" # Primary text colour
-      secondary-text-color: "rgba(255, 255, 255, 0.7)" # Secondary text colour
-      disabled-text-color: "rgba(255, 255, 255, 0.5)" # Disabled text colour
-      divider-color: "rgba(255, 255, 255, 0.12)" # Divider colour
-      paper-card-header-color: "#FFFFFF" # Card header text colour
-      table-row-alternative-background-color: "#303030"
-      paper-toggle-button-unchecked-bar-color: "#505050"
-      # Nav Menu #
-      paper-listbox-background-color: "#424242" # Listbox background colour
-      paper-listbox-color: "#FFFFFF" # Listbox text colour
-      paper-grey-200: "#616161" # Listbox selected item background colour
-      # Switches #
-      paper-toggle-button-checked-ink-color: "#1DE9B6"
-      paper-toggle-button-checked-button-color: "#1DE9B6"
-      paper-toggle-button-checked-bar-color: "#1DE9B6"
-      # Sliders #
-      paper-slider-knob-color: "#1DE9B6"
-      paper-slider-knob-start-color: "#1DE9B6"
-      paper-slider-pin-color: "#1DE9B6"
-      paper-slider-active-color: "#1DE9B6"
-      paper-slider-secondary-color: "#33F2D8"
-    dark_teal:
-      # Main Stuff #
-      primary-color: "#00796B" # Primary (most of the UI)
-      primary-background-color: "#303030" # Primary background colour (dialogs, e.t.c)
-      secondary-background-color: "#303030" # Secondary background colour (main UI background)
-      paper-card-background-color: "#424242" # Card background colour
-      paper-item-icon-color: "#00796B" # Icon colour
-      primary-text-color: "#FFFFFF" # Primary text colour
-      secondary-text-color: "rgba(255, 255, 255, 0.7)" # Secondary text colour
-      disabled-text-color: "rgba(255, 255, 255, 0.5)" # Disabled text colour
-      divider-color: "rgba(255, 255, 255, 0.12)" # Divider colour
-      paper-card-header-color: "#FFFFFF" # Card header text colour
-      table-row-alternative-background-color: "#303030"
-      paper-toggle-button-unchecked-bar-color: "#505050"
-      # Nav Menu #
-      paper-listbox-background-color: "#424242" # Listbox background colour
-      paper-listbox-color: "#FFFFFF" # Listbox text colour
-      paper-grey-200: "#616161" # Listbox selected item background colour
-      # Switches #
-      paper-toggle-button-checked-ink-color: "#00796B"
-      paper-toggle-button-checked-button-color: "#00796B"
-      paper-toggle-button-checked-bar-color: "#00796B"
-      # Sliders #
-      paper-slider-knob-color: "#00796B"
-      paper-slider-knob-start-color: "#00796B"
-      paper-slider-pin-color: "#00796B"
-      paper-slider-active-color: "#00796B"
-      paper-slider-secondary-color: "#33F2D8"
-    light_mono:
-      # Main Stuff #
-      primary-color: "#263238" # Primary (most of the UI)
-      primary-background-color: "#CFD8DC" # Primary background colour (dialogs, e.t.c)
-      secondary-background-color: "#ECEFF1" # Secondary background colour (main UI background)
-      paper-card-background-color: "#CFD8DC" # Card background colour
-      paper-item-icon-color: "#263238" # Icon colour
-      primary-text-color: "#263238" # Primary text colour
-      secondary-text-color: "rgba(0, 0, 0, 0.7)" # Secondary text colour
-      disabled-text-color: "rgba(0, 0, 0, 0.5)" # Disabled text colour
-      divider-color: "rgba(0, 0, 0, 0.12)" # Divider colour
-      paper-card-header-color: "#263238" # Card header text colour
-      table-row-alternative-background-color: "#ECEFF1"
-      paper-toggle-button-unchecked-bar-color: "#505050"
-      # Nav Menu #
-      paper-listbox-background-color: "#CFD8DC" # Listbox background colour
-      paper-listbox-color: "#CE93D8" # Listbox text colour
-      paper-grey-200: "#455A64" # Listbox selected item background colour
-      # Switches #
-      paper-toggle-button-checked-ink-color: "#263238"
-      paper-toggle-button-checked-button-color: "#263238"
-      paper-toggle-button-checked-bar-color: "#263238"
-      # Sliders #
-      paper-slider-knob-color: "#263238"
-      paper-slider-knob-start-color: "#263238"
-      paper-slider-pin-color: "#263238"
-      paper-slider-active-color: "#263238"
-      paper-slider-secondary-color: "#263238"
+  themes: !include themes.yaml
       
 group: !include_dir_merge_named group
 
@@ -133,8 +49,9 @@ http:
     - 10.8.0.0/24
   ip_ban_enabled: True
   login_attempts_threshold: 5
+  base_url: !secret base_url
 
-#Enabls the Configuration Panel
+#Enables the Configuration Panel
 config:
 
 # Checks for available updates
@@ -148,6 +65,8 @@ recorder:
 
 # Discover some devices automatically
 discovery:
+  ignore:
+    - samsung_tv
 
 # Allows you to issue voice commands from the frontend in enabled browsers
 conversation:
@@ -197,34 +116,46 @@ zone 2:
 
 # Device Tracking
 device_tracker:
-  - platform: tado
-    username: !secret tado_username
-    password: !secret tado_password
+#  - platform: tado
+#    username: !secret tado_username
+#    password: !secret tado_password
   - platform: asuswrt
     host: 192.168.1.1
     username: admin
     password: !secret asuswrt_password
     protocol: telnet
-    track_new_devices: false
+    new_device_defaults:
+      track_new_devices: false
   - platform: nmap_tracker
     hosts: 192.168.1.1/24
     consider_home: 180
     home_interval: 10
-    track_new_devices: false
+    new_device_defaults:
+      track_new_devices: false
 
 # Enables the Light Component
-light:
-  platform: hue
-  host: 192.168.1.8
-  allow_hue_groups: false
-  allow_unreachable: true
+hue:
+  bridges:
+    - host: 192.168.1.8
+      allow_hue_groups: false
+      allow_unreachable: true
 
-# Presents switches, sensors to Alexa via Hue Skill
-#emulated_hue:
-#  host_ip: 192.168.1.3 
-#  exposed_domains:
-#    - switch
-#    - input_boolean
+# Native HomeKit Component
+homekit:
+  filter:
+    include_domains:
+      - switch
+      - remote
+      - input_boolean
+      - script
+    exclude_entities:
+      - input_boolean.cat_notification_test_input
+      - input_boolean.dave_notification_test_input
+      - input_boolean.gamingpc_online
+      - input_boolean.switch_1_timer_input
+      - input_boolean.switch_2_timer_input
+      - input_boolean.test_input
+      - switch.office_light_flux
 
 # Enables Tado Heating Components
 tado:
@@ -239,6 +170,8 @@ mqtt:
   keepalive: 60
   username: !secret mqtt_username
   password: !secret mqtt_password
+  discovery: true
+  discovery_prefix: homeassistant
 
 # Enables the Harmony Remote Component  
 remote:
@@ -251,6 +184,22 @@ media_player lounge:
   - platform: kodi
     host: 192.168.1.4
 
+# Enables the Google Assistant component
+google_assistant:
+  project_id: homeassistant-integratio-e4236
+  client_id: !secret google_assistant_client_id
+  access_token: !secret google_assistant_access_token
+  agent_user_id: !secret google_assistant_email
+  api_key: !secret google_assistant_api_key
+  exposed_domains:
+    - switch
+    - scene
+    - input boolean
+
+# Enables TTS Component
+tts:
+  - platform: google
+
 # Enables the Weblink Components
 weblink:
   entities: 
@@ -259,7 +208,9 @@ weblink:
     - name: NSA310
       url: http://192.168.1.2
     - name: Transmission
-      url: http://192.168.1.3:9091
+      url: http://192.168.1.5:9091
+    - name: Medusa
+      url: http://192.168.1.5:8081
     - name: PiHole
       url: http://192.168.1.254/admin
 
@@ -268,17 +219,14 @@ shell_command:
   pause_transmission_downloads: transmission-remote -tall -S
   resume_transmission_downloads: transmission-remote -tall -s
 
-# Enables the Script Components
-script:
-  pause_transmission_downloads:
-    sequence:
-      - service: shell_command.pause_transmission_downloads
-  resume_transmission_downloads:
-    sequence:
-      - service: shell_command.resume_transmission_downloads
+panel_custom:
+  - name: floorplan
+    sidebar_title: Floorplan
+    sidebar_icon: mdi:home
+    url_path: floorplan
+    config: !include floorplan.yaml
 
 # Additional Components broken into Seperate yaml files
-alexa: !include alexa.yaml
 binary_sensor: !include_dir_merge_list binary_sensor
 camera: !include_dir_merge_list camera
 sensor: !include_dir_merge_list sensor
@@ -287,3 +235,5 @@ scene: !include_dir_merge_list scenes
 automation: !include_dir_merge_list automation
 input_boolean: !include_dir_merge_named input_boolean
 input_select: !include_dir_merge_named input_select
+timer: !include timers.yaml
+script: !include_dir_merge_named script

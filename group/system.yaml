@@ -10,4 +10,4 @@ system:
 ssl_cert_info:
   name: SSL Cert Information
   entities:
-    - sensor.ssl_cert_expiry
+    - sensor.ssl_certificate_expiry

@@ -22,10 +22,3 @@
   command: "python3.4 /home/homeassistant/.homeassistant/tidetimes/tideupdate.py | grep 'Next Low Tide Height:' | sed 's/^.*: //'"
   unit_of_measurement: "m"
   icon: mdi:elevation-decline
-
-#- platform: command_line
-#  name: SSL Cert Expiry
-#  command: "ssl-cert-check -c /etc/letsencrypt/live/REDACTED_URL/cert.pem | tail -c 36"
-#  scan_interval: 86400
-#  icon: mdi:certificate
-#  unit_of_measurement: days

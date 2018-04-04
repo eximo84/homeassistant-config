@@ -10,7 +10,7 @@
       value_template: "{{ 'Online' if is_state('device_tracker.harmonyhub', 'home') else 'Offline' }}"
 
     kindle_tablet:
-      value_template: "{{ 'Online' if is_state('device_tracker.kindle98daf0f3c', 'home') else 'Offline' }}"
+      value_template: "{{ 'Online' if is_state('device_tracker.kindle-fire7', 'home') else 'Offline' }}"
 
     zyxel_nsa310:
       value_template: "{{ 'Online' if is_state('device_tracker.nsa310', 'home') else 'Offline' }}"
@@ -19,16 +19,13 @@
       value_template: "{{ 'Online' if is_state('device_tracker.osmc', 'home') else 'Offline' }}"
 
     steam_link:
-      value_template: "{{ 'Online' if is_state('device_tracker.steamlink21ee', 'home') else 'Offline' }}"
+      value_template: "{{ 'Online' if is_state('device_tracker.steam_link', 'home') else 'Offline' }}"
 
     hue_hub:
       value_template: "{{ 'Online' if is_state('device_tracker.hugo', 'home') else 'Offline' }}"
 
-    amazon_echo_dot:
-      value_template: "{{ 'Online' if is_state('device_tracker.amazon603ce2c5e', 'home') else 'Offline' }}"
-
     tado_bridge:
-      value_template: "{{ 'Online' if is_state('device_tracker.tado_2', 'home') else 'Offline' }}"
+      value_template: "{{ 'Online' if is_state('device_tracker.tado_bridge_v3', 'home') else 'Offline' }}"
 
     daves_sp4:
       value_template: "{{ 'Online' if is_state('device_tracker.davessp4', 'home') else 'Offline' }}"

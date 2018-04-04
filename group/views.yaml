@@ -48,6 +48,9 @@ media players:
   icon: mdi:youtube-play
   entities:
     - media_player.kodi
+    - media_player.all_speakers
+    - media_player.dining_room_speaker
+    - media_player.upstairs_speaker
 
 travel:
   view: yes
@@ -67,4 +70,5 @@ info:
     - group.device_links
     - group.all_automations
     - group.testing
+    - script.tts_voice_greeting
     

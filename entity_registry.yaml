@@ -1,0 +1,124 @@
+light.bathroom_light:
+  name:
+  platform: hue
+  unique_id: 00:17:88:01:10:5a:e9:61-0b
+light.bedroom_side_light:
+  name:
+  platform: hue
+  unique_id: 00:17:88:01:10:4f:fd:37-0b
+light.lounge_sidelight:
+  name:
+  platform: hue
+  unique_id: 00:17:88:01:10:5a:aa:3a-0b
+light.landing_light:
+  name:
+  platform: hue
+  unique_id: 00:17:88:01:10:5a:da:bd-0b
+light.fire_uplight:
+  name:
+  platform: hue
+  unique_id: 00:17:88:01:02:ed:b5:e8-0b
+light.desk_lightstrip:
+  name:
+  platform: hue
+  unique_id: 00:17:88:01:01:1d:1d:69-0b
+light.front_door_light:
+  name:
+  platform: hue
+  unique_id: 00:17:88:01:02:6e:c0:c3-0b
+light.boat_light:
+  name:
+  platform: hue
+  unique_id: 00:17:88:01:02:7d:13:33-0b
+light.dining_room_uplight:
+  name:
+  platform: hue
+  unique_id: 00:17:88:01:10:40:57:78-0b
+sensor.home_tado_bridge_status:
+  name:
+  platform: tado
+  unique_id: tado bridge status 79175
+sensor.heating_temperature:
+  name:
+  platform: tado
+  unique_id: temperature 2
+sensor.heating_power:
+  name:
+  platform: tado
+  unique_id: power 2
+sensor.olivias_room_humidity:
+  name:
+  platform: tado
+  unique_id: humidity 1
+sensor.olivias_room_tado_mode:
+  name:
+  platform: tado
+  unique_id: tado mode 1
+sensor.heating_tado_mode:
+  name:
+  platform: tado
+  unique_id: tado mode 2
+sensor.olivias_room_temperature:
+  name:
+  platform: tado
+  unique_id: temperature 1
+sensor.heating_link:
+  name:
+  platform: tado
+  unique_id: link 2
+sensor.heating_heating:
+  name:
+  platform: tado
+  unique_id: heating 2
+sensor.heating_humidity:
+  name:
+  platform: tado
+  unique_id: humidity 2
+sensor.heating_overlay:
+  name:
+  platform: tado
+  unique_id: overlay 2
+sensor.olivias_room_link:
+  name:
+  platform: tado
+  unique_id: link 1
+sensor.olivias_room_power:
+  name:
+  platform: tado
+  unique_id: power 1
+sensor.olivias_room_heating:
+  name:
+  platform: tado
+  unique_id: heating 1
+sensor.olivias_room_overlay:
+  name:
+  platform: tado
+  unique_id: overlay 1
+sensor.cats_iphone_battery_state:
+  name:
+  platform: ios
+  unique_id: state_cats_iphone
+sensor.daves_iphone_battery_state:
+  name:
+  platform: ios
+  unique_id: state_daves_iphone
+sensor.cats_iphone_battery_level:
+  name:
+  platform: ios
+  unique_id: level_cats_iphone
+sensor.daves_iphone_battery_level:
+  name:
+  platform: ios
+  unique_id: level_daves_iphone
+media_player.upstairs_speaker:
+  name:
+  platform: cast
+  unique_id: 5eae05ad-6eb4-4b8b-2287-57e4ab669a41
+media_player.dining_room_speaker:
+  name:
+  platform: cast
+  unique_id: 39a97c13-799c-a206-202b-477f562ee621
+media_player.all_speakers:
+  name:
+  platform: cast
+  unique_id: 8f91832c-6bdf-47c8-b8a5-f1a3fb26e432

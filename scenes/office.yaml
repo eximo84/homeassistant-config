@@ -2,7 +2,7 @@
   entities:
     light.desk_lightstrip:
       state: on
-      brightness: 144
+      brightness: 254
       color_temp: 443
 
 - name: Office Aurora

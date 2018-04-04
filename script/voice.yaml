@@ -1,0 +1,7 @@
+tts_voice_greeting:
+  alias: tts_voice_greeting
+  sequence:
+    - service: tts.google_say
+      data:
+        entity_id: media_player.dining_room_speaker
+        message: 'Hello from Home Assistant'
