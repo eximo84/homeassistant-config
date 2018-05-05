@@ -1,0 +1,25 @@
+#####################################################
+#
+#  Switch on front door light when Cat arrives home after 10pm
+#
+#####################################################
+- alias: Lights on after hours
+  initial_state: false
+  hide_entity: false
+  trigger:
+    - platform: state
+      entity_id: device_tracker.catsiphone
+      from: 'not_home'      
+      to: 'home'
+  condition:
+    - condition: time
+      after: '22:00:00'
+      before: '06:00:00'
+  action:
+    - service: light.turn_on
+      data:
+        entity_id: light.front_door_light
+        brightness: 1
+    - delay: 00:10:00
+    - service: light.turn_off
+      entity_id: light.front_door_light   

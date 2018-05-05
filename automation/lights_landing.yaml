@@ -1,0 +1,41 @@
+#####################################################
+#
+#  Turn off landing light 1 minute after being switched on at night
+#
+#####################################################
+- alias: Landing light off after 1 minutes at night
+  initial_state: true
+  hide_entity: false
+  trigger:
+    - platform: state
+      entity_id: light.landing_light
+      from: 'off'
+      to: 'on'
+      for:
+        minutes: 1
+  condition:
+    - condition: time
+      after: '22:00:00'
+      before: '05:30:00'
+  action:
+    - service: light.turn_off
+      entity_id: light.landing_light
+
+#####################################################
+#
+#  Switch on landing light at 9pm ready for bed
+#
+#####################################################
+- alias: Landing Light on Bedtime
+  initial_state: true
+  hide_entity: false
+  trigger:
+    platform: time
+    at: '21:00:00'
+  condition:
+    condition: state
+    entity_id: group.family
+    state: 'home' 
+  action:
+    - service: scene.turn_on
+      entity_id: scene.bedtime

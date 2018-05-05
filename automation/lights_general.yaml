@@ -1,0 +1,221 @@
+#####################################################
+#
+#  Switch on lights if nobody home at sunset
+#
+#####################################################
+- alias: Lights on at sunset if not home
+  initial_state: true
+  hide_entity: false
+  trigger:
+    platform: sun
+    event: sunset
+  condition:
+    condition: state
+    entity_id: group.family
+    state: 'not_home' 
+  action:
+    - service: scene.turn_on
+      entity_id: scene.not_home
+    - service: notify.ios_daves_iphone
+      data:
+        message: 'There is no one home so I have switched on the lights ready for you to arrive home.'
+
+#####################################################
+#
+#  Switch on lights 1 hour before sunset if at home and GMT
+#
+#####################################################
+- alias: Lights on 1hr before sunset if home GMT
+  initial_state: true
+  hide_entity: false
+  trigger:
+    platform: sun
+    event: sunset
+    offset: '-01:00:00'
+  condition:
+    condition: and
+    conditions:
+     - condition: state
+       entity_id: group.family
+       state: 'home'
+#     - condition: state
+#       entity_id: binary_sensor.bst
+#       state: 'off'
+  action:
+#    - service: scene.turn_on
+#      entity_id: scene.evening_downstairs
+    - service: light.turn_on
+      data:
+        entity_id: group.lounge_lights
+        brightness: 255
+    - service: light.turn_on
+      data:
+        entity_id: group.dining_room_lights
+        brightness: 255
+    - service: notify.ios_daves_iphone
+      data:
+        message: 'It is 1 hour until sunset so I have switched on the lights for you.'
+
+#####################################################
+#
+#  Switch on lights when someone arrives home and nobody is already home or lights are off
+#
+#####################################################
+- alias: Lights on arrive home
+  initial_state: true
+  hide_entity: false
+  trigger:
+    platform: state
+    entity_id: group.family
+    from: 'not_home'
+    to: 'home'
+  condition:
+    condition: and
+    conditions:
+      - condition: sun
+        after: sunset
+        after_offset: '-01:00:00'
+      - condition: state
+        entity_id: group.lounge_lights
+        state: 'off'
+      - condition: state
+        entity_id: group.dining_room_lights
+        state: 'off'
+  action:
+    - service: light.turn_on
+      data:
+        entity_id: group.lounge_lights
+        brightness: 255
+    - service: light.turn_on
+      data:
+        entity_id: group.dining_room_lights
+        brightness: 255
+    - service: light.turn_on
+      data:
+        entity_id: light.landing_light
+        brightness: 200
+#   - service: scene.turn_on
+#     entity_id: scene.evening_downstairs
+    - service: switch.turn_on
+      entity_id: switch.sonoff_power_1
+    - service: notify.ios_daves_iphone
+      data:
+        message: 'Welcome home, I have switched on the lights for you.'
+    - delay: 00:10:00 
+    - service: light.turn_off
+      entity_id: light.front_door_light
+
+ 
+  
+#####################################################
+#
+#  Switch off lights during the day when
+#  everyone leaves the house but only when
+#  guest mode is disabled
+#
+#####################################################
+- alias: Lights off all leave home
+  initial_state: true
+  hide_entity: false
+  trigger:
+    platform: state
+    entity_id: group.family
+    from: 'home'
+    to: 'not_home'
+    for:
+      minutes: 5
+  condition:
+    condition: and
+    conditions:
+      - condition: time
+        after: '07:00:00'
+      - condition: sun
+        before: sunset
+        before_offset: "-00:15:00"
+      - condition: state
+        entity_id: input_boolean.guest_mode
+        state: 'off'
+      - condition: state
+        entity_id: group.lights
+        state: 'on'
+  action:
+    - service: light.turn_off
+      entity_id: group.all_lights
+    - service: switch.turn_off
+      entity_id: switch.sonoff_power_1
+    - service: notify.ios_daves_iphone
+      data:
+        message: 'There is no one at home and some lights where left on, so I have switched off the lights for you.'
+
+
+#####################################################
+#
+#  Switch off downstairs lights at 9am
+#
+#####################################################
+- alias: Downstairs lights off at 9am
+  initial_state: false
+  hide_entity: false
+  trigger:
+    platform: time
+    at: '09:00:00' 
+  action:
+    - service: light.turn_off
+      entity_id: group.lounge_lights
+    - service: light.turn_off
+      entity_id: group.dining_room_lights
+
+
+#####################################################
+#
+#  Switch on Dining Room lights at 5:30pm if at home and BST
+#
+#####################################################
+- alias: Dining Room Lights on at 5:30 if home BST
+  initial_state: false
+  hide_entity: false
+  trigger:
+    platform: time
+    at: '17:30:00'
+  condition:
+    condition: and
+    conditions:
+     - condition: state
+       entity_id: group.family
+       state: 'home'
+     - condition: state
+       entity_id: binary_sensor.bst
+       state: 'on'
+  action:
+    - service: scene.turn_on
+      entity_id: scene.evening_diningroom
+    - service: notify.ios_daves_iphone
+      data:
+        message: 'It is 5:30pm so I have switched on the dining room lights for you.'
+
+#####################################################
+#
+#  Switch on Lounge lights at 7:00pm if at home and BST
+#
+#####################################################
+- alias: Lounge Lights on at 7:00 if home BST
+  initial_state: false
+  hide_entity: false
+  trigger:
+    platform: time
+    at: '17:30:00'
+  condition:
+    condition: and
+    conditions:
+     - condition: state
+       entity_id: group.family
+       state: 'home'
+     - condition: state
+       entity_id: binary_sensor.bst
+       state: 'on'
+  action:
+    - service: scene.turn_on
+      entity_id: scene.evening_lounge
+    - service: notify.ios_daves_iphone
+      data:
+        message: 'It is 5:30pm so I have switched on the lounge lights for you.'

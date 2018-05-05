@@ -58,10 +58,12 @@ olivias room:
 
 bathroom:
   name: Bathroom
+  control: hidden
   entities:
     - group.bathroom_lights
     - sensor.bathroom_temperature
     - sensor.bathroom_lux
     - sensor.bathroom_motion_binary
     - sensor.bathroom_motion_sensor_battery
+    - input_boolean.bathtime_input
     

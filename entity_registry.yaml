@@ -122,3 +122,7 @@ media_player.all_speakers:
   name:
   platform: cast
   unique_id: 8f91832c-6bdf-47c8-b8a5-f1a3fb26e432
+light.spare_room_light:
+  name:
+  platform: hue
+  unique_id: 00:17:88:01:02:a2:0a:4e-0b

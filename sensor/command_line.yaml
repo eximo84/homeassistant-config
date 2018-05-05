@@ -1,24 +1,24 @@
-- platform: command_line
-  name: Tide Location
-  command: "python3.4 /home/homeassistant/.homeassistant/tidetimes/tideupdate.py | grep 'Location:' | sed 's/^.*: //'"
+#- platform: command_line
+#  name: Tide Location
+#  command: "python3.4 /home/homeassistant/.homeassistant/tidetimes/tideupdate.py | grep 'Location:' | sed 's/^.*: //'"
 
-- platform: command_line
-  name: High Tide Time
-  command: "python3.4 /home/homeassistant/.homeassistant/tidetimes/tideupdate.py | grep 'Next High Tide:' | sed 's/^.*: //'"
+#- platform: command_line
+#  name: High Tide Time
+#  command: "python3.4 /home/homeassistant/.homeassistant/tidetimes/tideupdate.py | grep 'Next High Tide:' | sed 's/^.*: //'"
 
-- platform: command_line
-  name: High Tide Height
-  command: "python3.4 /home/homeassistant/.homeassistant/tidetimes/tideupdate.py | grep 'Next High Tide Height:' | sed 's/^.*: //'"
-  unit_of_measurement: "m"
-  icon: mdi:elevation-rise
+#- platform: command_line
+#  name: High Tide Height
+#  command: "python3.4 /home/homeassistant/.homeassistant/tidetimes/tideupdate.py | grep 'Next High Tide Height:' | sed 's/^.*: //'"
+#  unit_of_measurement: "m"
+#  icon: mdi:elevation-rise
 
-- platform: command_line
-  name: Low Tide Time
-  command: "python3.4 /home/homeassistant/.homeassistant/tidetimes/tideupdate.py | grep 'Next Low Tide:' | sed 's/^.*: //'"
-  icon: mdi:flag-variant
+#- platform: command_line
+#  name: Low Tide Time
+#  command: "python3.4 /home/homeassistant/.homeassistant/tidetimes/tideupdate.py | grep 'Next Low Tide:' | sed 's/^.*: //'"
+#  icon: mdi:flag-variant
 
-- platform: command_line
-  name: Low Tide Height
-  command: "python3.4 /home/homeassistant/.homeassistant/tidetimes/tideupdate.py | grep 'Next Low Tide Height:' | sed 's/^.*: //'"
-  unit_of_measurement: "m"
-  icon: mdi:elevation-decline
+#- platform: command_line
+#  name: Low Tide Height
+#  command: "python3.4 /home/homeassistant/.homeassistant/tidetimes/tideupdate.py | grep 'Next Low Tide Height:' | sed 's/^.*: //'"
+#  unit_of_measurement: "m"
+#  icon: mdi:elevation-decline

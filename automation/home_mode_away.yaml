@@ -1,0 +1,21 @@
+#####################################################
+#
+#  Switch the lights off at a random time after 9pm if away
+#
+#####################################################
+- alias: Away Presence Mimicking
+  initial_state: true
+  trigger:
+    - platform: time
+      at: '21:00:00'
+  condition:
+    - condition: state
+      entity_id: input_boolean.away_mode
+      state: 'on'
+  action:
+    - delay: '{{ ((range(0, 1) | random) | int) ~ ":" ~ ((range(5, 55) | random) | int)  ~ ":" ~  ((range(5, 55) | random) | int) }}'
+    - service: scene.turn_off
+      entity_id: scene.daytime
+    - service: notify.ios_daves_iphone
+      data:
+        message: 'Turned the lights off downstairs to fake you being home.' 

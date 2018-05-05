@@ -35,3 +35,19 @@
       entity_id: automation.lights_off_all_leave_home
     - service: automation.turn_off
       entity_id: automation.guest_mode_lights_on_30_mins_before_sunset
+
+#####################################################
+#
+#  Switch on lights 1hr before sunset if Guest Mode Enabled
+#
+#####################################################
+- alias: Guest Mode Lights on 1hr before sunset
+  initial_state: false
+  hide_entity: false
+  trigger:
+    platform: sun
+    event: sunset
+    offset: '-01:00:00'
+  action:
+    - service: scene.turn_on
+      entity_id: scene.evening_downstairs

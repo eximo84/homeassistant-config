@@ -17,3 +17,7 @@ switch_1_timer_input:
 switch_2_timer_input:
   name: Enable Timer
   icon: mdi:clock-start
+
+bathtime_input:
+  name: Bathtime
+  icon: mdi:water-pump

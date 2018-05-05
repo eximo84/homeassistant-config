@@ -1,0 +1,238 @@
+#####################################################
+#
+#  Set Bathroom on after motion detected early morning
+#
+#####################################################
+- alias: Bathroom Lights on after motion detected early morning
+  initial_state: true
+  hide_entity: false
+  trigger:
+    - platform: state
+      entity_id: sensor.bathroom_motion_binary
+      from: 'False'
+      to: 'True'
+  condition:
+    - condition: time
+      after: '05:30:00'
+      before: '06:45:00'
+  action:
+    - service: light.turn_on
+      data:
+        entity_id: light.bathroom_light
+        brightness: 200
+        transition: 180
+        rgb_color: [255, 189, 86]
+
+#####################################################
+#
+#  Set Bathroom on after motion detected during daytime
+#
+#####################################################
+- alias: Bathroom Lights on after motion detected daytime
+  initial_state: true
+  hide_entity: false
+  trigger:
+    platform: state
+    entity_id: sensor.bathroom_motion_binary
+    from: 'False'
+    to: 'True'
+  condition:
+    condition: and
+    conditions:
+      - condition: time
+        after: '06:45:00'
+        before: '22:00:00'
+      - condition: numeric_state
+        entity_id: sensor.bathroom_lux
+        below: 14000
+  action:
+    - service: light.turn_on
+      data:
+        entity_id: light.bathroom_light
+        brightness: 254
+        rgb_color: [255, 211, 135]
+
+#####################################################
+#
+#  Set Bathroom and landing lights on after motion detected at night
+#
+#####################################################
+- alias: Bathroom Lights on after motion detected at night
+  initial_state: true
+  hide_entity: false
+  trigger:
+    - platform: state
+      entity_id: sensor.bathroom_motion_binary
+      from: 'False'
+      to: 'True'
+  condition:
+    - condition: time
+      after: '22:00:00'
+      before: '05:30:00'
+  action:
+    - service: light.turn_on
+      data:
+        entity_id: light.bathroom_light
+        brightness: 25
+        rgb_color: [255, 251, 4]
+#    - service: light.turn_on
+#      data:
+#        entity_id: light.landing_light
+#        brightness: 1
+#        rgb_color: [255, 251, 4]
+
+#####################################################
+#
+#  Turn off Bathroom light 5 minutes after last motion detected
+#
+#####################################################
+- alias: Bathroom Lights off 5 mins after motion detected
+  initial_state: true
+  hide_entity: false
+  trigger:
+    - platform: state
+      entity_id: sensor.bathroom_motion_binary
+      from: 'True'
+      to: 'False'
+      for:
+        minutes: 4
+  condition:
+    condition: or
+    conditions:
+      - condition: time
+        after: '09:00:00'
+        before: '18:00:00'
+      - condition: time
+        after: '19:00:00'
+        before: '05:30:00'
+  action:
+    - service: light.turn_on
+      data:
+        entity_id: light.bathroom
+        brightness: 150
+    - delay: 00:01:00
+    - service: light.turn_off
+      entity_id: light.bathroom_light
+
+
+#####################################################
+#
+#  Turn off Bathroom light 15 minutes after last motion detected
+#
+#####################################################
+- alias: Bathroom Lights off 15 mins after motion detected
+  initial_state: true
+  hide_entity: false
+  trigger:
+    - platform: state
+      entity_id: sensor.bathroom_motion_binary
+      from: 'True'
+      to: 'False'
+      for:
+        minutes: 14
+  condition:
+    - condition: time
+      after: '18:00:00'
+      before: '19:00:00'
+  action:
+    - service: light.turn_on
+      data:
+        entity_id: light.bathroom
+        brightness: 150
+    - delay: 00:01:00
+    - service: light.turn_off
+      entity_id: light.bathroom_light
+
+#####################################################
+#
+#  Turn off Bathroom light 10 minutes after last motion detected
+#
+#####################################################
+- alias: Bathroom Lights off 10 mins after motion detected
+  initial_state: true
+  hide_entity: false
+  trigger:
+    - platform: state
+      entity_id: sensor.bathroom_motion_binary
+      from: 'True'
+      to: 'False'
+      for:
+        minutes: 9
+  condition:
+    - condition: time
+      after: '05:30:00'
+      before: '09:00:00'
+  action:
+    - service: light.turn_on
+      data:
+        entity_id: light.bathroom
+        brightness: 150
+    - delay: 00:01:00 
+    - service: light.turn_off
+      entity_id: light.bathroom_light
+
+#####################################################
+#
+#  Disable bathroom motion sensor automations for bathtime override
+#
+#####################################################
+- alias: Bathtime Enabled
+  initial_state: true
+  hide_entity: false
+  trigger:
+    - platform: state
+      entity_id: input_boolean.bathtime_input
+      from: 'off'
+      to: 'on'
+  action:
+    - service: light.turn_on
+      data:
+        entity_id: light.bathroom_light
+        brightness: 200
+        rgb_color: [255, 211, 135]
+    - service: automation.turn_off
+      entity_id: automation.bathroom_lights_off_10_mins_after_motion_detected
+    - service: automation.turn_off
+      entity_id: automation.bathroom_lights_off_15_mins_after_motion_detected
+    - service: automation.turn_off
+      entity_id: automation.bathroom_lights_off_5_mins_after_motion_detected
+    - service: automation.turn_off
+      entity_id: automation.bathroom_lights_on_after_motion_detected_at_night
+    - service: automation.turn_off
+      entity_id: automation.bathroom_lights_on_after_motion_detected_daytime
+    - service: automation.turn_off
+      entity_id: automation.bathroom_lights_on_after_motion_detected_early_morning
+    - service: notify.ios_cats_iphone
+      data:
+        message: 'I have disabled the bathroom motion sensor, hope you enjoy your bath!'
+
+
+#####################################################
+#
+#  Enable bathroom motion sensor automations for bathtime override
+#
+#####################################################
+- alias: Bathtime Enabled
+  initial_state: true
+  hide_entity: false
+  trigger:
+    - platform: state
+      entity_id: input_boolean.bathtime_input
+      from: 'on'
+      to: 'off'
+  action:
+    - service: automation.turn_on
+      entity_id: automation.bathroom_lights_off_10_mins_after_motion_detected
+    - service: automation.turn_on
+      entity_id: automation.bathroom_lights_off_15_mins_after_motion_detected
+    - service: automation.turn_on
+      entity_id: automation.bathroom_lights_off_5_mins_after_motion_detected
+    - service: automation.turn_on
+      entity_id: automation.bathroom_lights_on_after_motion_detected_at_night
+    - service: automation.turn_on
+      entity_id: automation.bathroom_lights_on_after_motion_detected_daytime
+    - service: automation.turn_on
+      entity_id: automation.bathroom_lights_on_after_motion_detected_early_morning
+    - service: notify.ios_cats_iphone
+      data:
+        message: 'I have enabled the bathroom motion sensor again, hope you feel more relaxed now.'
