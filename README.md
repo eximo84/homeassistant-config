@@ -1,3 +1,5 @@
+# Moved to [Version 2](https://github.com/eximo84/homeassistant-config-v2)
+
 # HomeAssistant Config
 
 This is my current HomeAssistant config running on a Raspberry Pi 3.
